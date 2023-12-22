@@ -13,8 +13,11 @@ public class HotelService {
 
     private HotelRepository hotelRepository;
 
+    private HotelChainRepository hotelChainRepository;
+
     public HotelService() {
         this.hotelRepository = new HotelRepository();
+        this.hotelChainRepository = new HotelChainRepository();
     }
 
     public void createHotel() throws SQLException {

@@ -29,12 +29,10 @@ public class CountryRepository implements Create<Country>, Delete, Update<Countr
     }
 
     @Override
-    public void deleteById(int id) {
-
+    public void deleteById(int id){
     }
 
     @Override
     public void updateById(Country country,int id) {
-
     }
 }
