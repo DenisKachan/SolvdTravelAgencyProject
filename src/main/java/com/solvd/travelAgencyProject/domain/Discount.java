@@ -12,4 +12,14 @@ public class Discount {
     private int amountOfTours;
 
     private double amountOfDiscount;
+
+    public Discount(int id, int amountOfTours, double amountOfDiscount) {
+        this.id = id;
+        this.amountOfTours = amountOfTours;
+        this.amountOfDiscount = amountOfDiscount;
+    }
+
+    public Discount() {
+
+    }
 }

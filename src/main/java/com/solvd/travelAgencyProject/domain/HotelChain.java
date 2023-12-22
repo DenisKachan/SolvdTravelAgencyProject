@@ -10,4 +10,13 @@ public class HotelChain {
     private int id;
 
     private String name;
+
+    public HotelChain(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public HotelChain() {
+
+    }
 }

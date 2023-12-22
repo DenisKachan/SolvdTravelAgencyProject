@@ -26,4 +26,21 @@ public class ClientAgreement {
     private TourType tourType;
 
     private MainTransport mainTransport;
+
+    public ClientAgreement(int id, Date date, String conditions, Client client, Discount discount,
+                           TravelAgent travelAgent, Tour tour, TourType tourType, MainTransport mainTransport) {
+        this.id = id;
+        this.date = date;
+        this.conditions = conditions;
+        this.client = client;
+        this.discount = discount;
+        this.travelAgent = travelAgent;
+        this.tour = tour;
+        this.tourType = tourType;
+        this.mainTransport = mainTransport;
+    }
+
+    public ClientAgreement() {
+
+    }
 }

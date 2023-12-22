@@ -4,6 +4,7 @@ package com.solvd.travelAgencyProject.service.consoleScanner;
 import com.solvd.travelAgencyProject.domain.*;
 import lombok.extern.log4j.Log4j2;
 
+import java.util.Date;
 import java.util.Scanner;
 
 @Log4j2
@@ -12,44 +13,109 @@ public final class CreationObjectsFromConsole {
     public static final Scanner scanner = new Scanner(System.in);
 
     public ClientAgreement createClientAgreementFromConsole(){
-        return new ClientAgreement();
+        ClientAgreement clientAgreement = new ClientAgreement();
+        clientAgreement.setDate(new Date());
+        log.info("Enter the conditions of the client agreement");
+        clientAgreement.setConditions(scanner.next());
+        log.info("Enter the id of the client");
+        clientAgreement.getClient().setId(scanner.nextInt());
+        log.info("Enter the id of the discount");
+        clientAgreement.getDiscount().setId(scanner.nextInt());
+        log.info("Enter the id of the travel agent");
+        clientAgreement.getTravelAgent().setId(scanner.nextInt());
+        log.info("Enter the id of the tour");
+        clientAgreement.getTour().setId(scanner.nextInt());
+        log.info("Enter the id of the tour type");
+        clientAgreement.getTourType().setId(scanner.nextInt());
+        log.info("Enter the id of the main transport");
+        clientAgreement.getMainTransport().setId(scanner.nextInt());
+        return clientAgreement;
     }
 
     public Client createClientFromConsole(){
-        return new Client();
+        Client client = new Client();
+        log.info("Enter the phone number of the client");
+        client.setPhoneNumber(scanner.nextInt());
+        log.info("Enter the name of the client");
+        client.setName(scanner.next());
+        log.info("Enter the surname of the client");
+        client.setSurname(scanner.next());
+        log.info("Enter the id of the discount");
+        client.getDiscount().setId(scanner.nextInt());
+        return client;
     }
 
     public Country createNewCountryFromConsole(){
-        return new Country();
+        Country country = new Country();
+        log.info("Enter the name of the country");
+        country.setName(scanner.next());
+        return country;
     }
 
     public Discount createNewDiscountFromConsole(){
-        return new Discount();
+        Discount discount = new Discount();
+        log.info("Enter the amount of tours needed for the discount");
+        discount.setAmountOfTours(scanner.nextInt());
+        log.info("Enter the amount of discount");
+        discount.setAmountOfDiscount(scanner.nextInt());
+        return discount;
     }
 
     public HotelChain createNewHotelChainFromConsole(){
-        return new HotelChain();
+        HotelChain hotelChain = new HotelChain();
+        log.info("Enter the name of the hotel chain");
+        hotelChain.setName(scanner.next());
+        return hotelChain;
     }
 
     public Hotel createNewHotelFromConsole(){
-        return new Hotel();
+        Hotel hotel = new Hotel();
+        log.info("Enter the name of the hotel");
+        hotel.setName(scanner.next());
+        log.info("Enter the capacity of the hotel");
+        hotel.setCapacity(scanner.nextInt());
+        log.info("Enter the phone number of the hotel");
+        hotel.setTelephoneNumber(scanner.nextInt());
+        log.info("Enter the id of the hotel chain");
+        hotel.getHotelChain().setId(scanner.nextInt());
+        return hotel;
     }
 
     public MainTransport createNewMainTransportFromConsole(){
-        return new MainTransport();
+        MainTransport mainTransport = new MainTransport();
+        log.info("Enter the name of the main transport");
+        mainTransport.setName(scanner.next());
+        return mainTransport;
     }
 
     public Tour createNewTourFromConsole(){
-        return new Tour();
+        Tour tour = new Tour();
+        log.info("Enter the name of the tour");
+        tour.setName(scanner.next());
+        log.info("Enter the cost of the tour");
+        tour.setCost(scanner.nextDouble());
+        log.info("Enter the id og the tour type");
+        tour.getTourType().setId(scanner.nextInt());
+        log.info("Enter the id of the main transport");
+        tour.getMainTransport().setId(scanner.nextInt());
+        return tour;
     }
 
     public TourType createNewTourTypeFromConsole(){
-        return new TourType();
+        TourType tourType = new TourType();
+        log.info("Enter the name of the tour type");
+        tourType.setName(scanner.next());
+        return tourType;
     }
 
     public TravelAgent createNewTravelAgentFromConsole(){
-        return new TravelAgent();
+        TravelAgent travelAgent = new TravelAgent();
+        log.info("Enter the name of the travel agent");
+        travelAgent.setName(scanner.next());
+        log.info("Enter the surname of the travel agent");
+        travelAgent.setSurname(scanner.next());
+        log.info("Enter the id of the tour type");
+        travelAgent.getTourType().setId(scanner.nextInt());
+        return travelAgent;
     }
-
-
 }

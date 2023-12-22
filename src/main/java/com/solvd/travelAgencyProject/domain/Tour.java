@@ -16,4 +16,16 @@ public class Tour {
     private MainTransport mainTransport;
 
     private TourType tourType;
+
+    public Tour(int id, String name, double cost, MainTransport mainTransport, TourType tourType) {
+        this.id = id;
+        this.name = name;
+        this.cost = cost;
+        this.mainTransport = mainTransport;
+        this.tourType = tourType;
+    }
+
+    public Tour() {
+
+    }
 }

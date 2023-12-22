@@ -3,8 +3,6 @@ package com.solvd.travelAgencyProject.domain;
 import lombok.Data;
 import lombok.extern.log4j.Log4j2;
 
-import java.util.Objects;
-
 @Log4j2
 @Data
 public class Client {
@@ -18,4 +16,16 @@ public class Client {
     private String surname;
 
     private Discount discount;
+
+    public Client(int id, int phoneNumber, String name, String surname, Discount discount) {
+        this.id = id;
+        this.phoneNumber = phoneNumber;
+        this.name = name;
+        this.surname = surname;
+        this.discount = discount;
+    }
+
+    public Client() {
+
+    }
 }

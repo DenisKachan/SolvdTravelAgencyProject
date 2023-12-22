@@ -3,11 +3,13 @@ package com.solvd.travelAgencyProject.persistence.repositories;
 import com.solvd.travelAgencyProject.domain.Discount;
 import com.solvd.travelAgencyProject.persistence.ConnectionPool;
 import com.solvd.travelAgencyProject.persistence.interfaces.Create;
+import com.solvd.travelAgencyProject.persistence.interfaces.Delete;
+import com.solvd.travelAgencyProject.persistence.interfaces.Update;
 import lombok.extern.log4j.Log4j2;
 
 import java.sql.*;
 @Log4j2
-public class DiscountRepository implements Create<Discount>{
+public class DiscountRepository implements Create<Discount>, Delete, Update<Discount> {
 
 
     @Override
@@ -25,5 +27,14 @@ public class DiscountRepository implements Create<Discount>{
         }catch (SQLException sqlException){
             log.error(sqlException.getMessage());
         }
+    }
+
+    @Override
+    public void deleteById(int id) {
+
+    }
+
+    @Override
+    public void updateById(Discount discount,int id) {
     }
 }

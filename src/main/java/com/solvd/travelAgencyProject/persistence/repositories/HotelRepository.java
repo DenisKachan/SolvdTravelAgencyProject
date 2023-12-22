@@ -3,12 +3,14 @@ package com.solvd.travelAgencyProject.persistence.repositories;
 import com.solvd.travelAgencyProject.domain.Hotel;
 import com.solvd.travelAgencyProject.persistence.ConnectionPool;
 import com.solvd.travelAgencyProject.persistence.interfaces.Create;
+import com.solvd.travelAgencyProject.persistence.interfaces.Delete;
+import com.solvd.travelAgencyProject.persistence.interfaces.Update;
 import lombok.extern.log4j.Log4j2;
 
 import java.sql.*;
 
 @Log4j2
-public class HotelRepository implements Create<Hotel> {
+public class HotelRepository implements Create<Hotel>, Delete, Update<Hotel> {
     @Override
     public void create(Hotel value) throws SQLException {
         Connection connection = ConnectionPool.getConnectionFromPool();
@@ -27,5 +29,15 @@ public class HotelRepository implements Create<Hotel> {
         }catch (SQLException sqlException){
             log.error(sqlException.getMessage());
         }
+    }
+
+    @Override
+    public void deleteById(int id) {
+
+    }
+
+    @Override
+    public void updateById(Hotel hotel,int id) {
+
     }
 }

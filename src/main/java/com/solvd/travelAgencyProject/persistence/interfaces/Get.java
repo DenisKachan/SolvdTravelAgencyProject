@@ -1,6 +1,6 @@
 package com.solvd.travelAgencyProject.persistence.interfaces;
 
-public interface Delete {
+public interface Get <T>{
 
-    void deleteById(int id);
+    T getById(int id);
 }
