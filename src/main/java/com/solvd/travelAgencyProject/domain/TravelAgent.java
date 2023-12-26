@@ -15,6 +15,8 @@ public class TravelAgent {
 
     private TourType tourType;
 
+    private int tourTypeId;
+
     public TravelAgent(int id, String name, String surname, TourType tourType) {
         this.id = id;
         this.name = name;

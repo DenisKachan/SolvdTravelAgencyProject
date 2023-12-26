@@ -17,15 +17,27 @@ public class ClientAgreement {
 
     private Client client;
 
+    private int ClientId;
+
     private Discount discount;
+
+    private int discountId;
 
     private TravelAgent travelAgent;
 
+    private int travelAgentId;
+
     private Tour tour;
+
+    private int tourId;
 
     private TourType tourType;
 
+    private int tourTypeId;
+
     private MainTransport mainTransport;
+
+    private int mainTransportId;
 
     public ClientAgreement(int id, Date date, String conditions, Client client, Discount discount,
                            TravelAgent travelAgent, Tour tour, TourType tourType, MainTransport mainTransport) {
@@ -41,6 +53,5 @@ public class ClientAgreement {
     }
 
     public ClientAgreement() {
-
     }
 }

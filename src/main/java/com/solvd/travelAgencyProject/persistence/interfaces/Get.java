@@ -1,6 +1,8 @@
 package com.solvd.travelAgencyProject.persistence.interfaces;
 
-public interface Get <T>{
+import java.sql.SQLException;
 
-    T getById(int id);
+public interface Get<T> {
+
+    T getById(int id) throws SQLException;
 }

@@ -11,7 +11,7 @@ public class ConnectionPool {
 
     static {
         dataSource = new BasicDataSource();
-        dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/?user=root");
+        dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/travel_agency");
         dataSource.setUsername("root");
         dataSource.setPassword("1234");
 

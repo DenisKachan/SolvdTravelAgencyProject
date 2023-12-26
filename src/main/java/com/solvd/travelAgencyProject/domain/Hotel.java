@@ -17,6 +17,8 @@ public class Hotel {
 
     private HotelChain hotelChain;
 
+    private int hotelChainId;
+
     public Hotel(int id, String name, int capacity, int telephoneNumber, HotelChain hotelChain) {
         this.id = id;
         this.name = name;

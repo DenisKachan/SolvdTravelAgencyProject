@@ -15,7 +15,11 @@ public class Tour {
 
     private MainTransport mainTransport;
 
+    private int mainTransportId;
+
     private TourType tourType;
+
+    private int tourTypeId;
 
     public Tour(int id, String name, double cost, MainTransport mainTransport, TourType tourType) {
         this.id = id;
