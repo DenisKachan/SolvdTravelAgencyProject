@@ -50,4 +50,21 @@ public class TourService {
         tour.setMainTransport(mainTransportRepository.getById(tour.getMainTransportId()));
         return tour;
     }
+
+    public void showToursByCriteria(){
+        log.info("Enter 'cost' or 'tour type' if you want get tours by established criteria");
+        String option = CreationObjectsFromConsole.scanner.next();
+        switch (option) {
+            case ("cost"):
+                log.info("Enter the maximum cost of the tour");
+                double cost = CreationObjectsFromConsole.scanner.nextDouble();
+                tourRepository.showToursWithArrangedCost(cost);
+                break;
+            case ("tour type"):
+                log.info("Enter the type of the tour");
+                String tourType = CreationObjectsFromConsole.scanner.next();
+                tourRepository.showToursWithEstablishedTourType(tourType);
+                break;
+        }
+    }
 }

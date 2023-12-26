@@ -9,6 +9,8 @@ import com.solvd.travelAgencyProject.persistence.interfaces.Update;
 import lombok.extern.log4j.Log4j2;
 
 import java.sql.*;
+import java.util.LinkedList;
+import java.util.List;
 
 @Log4j2
 public class TourRepository implements Create<Tour>, Delete, Update<Tour>, Get<Tour> {
@@ -77,5 +79,35 @@ public class TourRepository implements Create<Tour>, Delete, Update<Tour>, Get<T
             log.error(sqlException.getMessage());
         }
         return tour;
+    }
+
+    public void showToursWithArrangedCost(double cost){
+        try (Connection connection = ConnectionPool.getConnectionFromPool()) {
+            PreparedStatement preparedStatement = connection.prepareStatement("select tour.id, tour.name, tour.cost, tour_type.id, tour_type.name from tour " +
+                    " inner join tour_type on tour.type_of_the_tour = tour_type.id where cost<=?");
+            preparedStatement.setDouble(1, cost);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                log.info("Tour id -" +resultSet.getInt("id") +", tour cost - "+resultSet.getDouble("cost")+", name - "+resultSet.getString("name")+
+                        "tour type id - "+resultSet.getInt("type_of_the_tour")+"tour type name - "+resultSet.getString("tour_type.name"));
+            }
+        } catch (SQLException sqlException) {
+            log.error(sqlException.getMessage());
+        }
+    }
+
+    public void showToursWithEstablishedTourType(String nameOfTheTourType){
+        try (Connection connection = ConnectionPool.getConnectionFromPool()) {
+            PreparedStatement preparedStatement = connection.prepareStatement("select tour.id, tour.name, tour.cost, tour_type.id, tour_type.name from tour " +
+                    " inner join tour_type on tour.type_of_the_tour = tour_type.id where tour_type.name=?");
+            preparedStatement.setString(1, nameOfTheTourType);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                log.info("Tour id -" +resultSet.getInt("id") +", tour cost - "+resultSet.getDouble("cost")+", name - "+resultSet.getString("name")+
+                        "tour type id - "+resultSet.getInt("type_of_the_tour")+"tour type name - "+resultSet.getString("tour_type.name"));
+            }
+        } catch (SQLException sqlException) {
+            log.error(sqlException.getMessage());
+        }
     }
 }

@@ -3,6 +3,8 @@ package com.solvd.travelAgencyProject.domain;
 import lombok.Data;
 import lombok.extern.log4j.Log4j2;
 
+import java.util.Objects;
+
 @Log4j2
 @Data
 public class HotelChain {
@@ -18,5 +20,25 @@ public class HotelChain {
 
     public HotelChain() {
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof HotelChain that)) return false;
+        return getId() == that.getId() && Objects.equals(getName(), that.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getName());
+    }
+
+    @Override
+    public String toString() {
+        return "HotelChain{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

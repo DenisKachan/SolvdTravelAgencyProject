@@ -3,6 +3,8 @@ package com.solvd.travelAgencyProject.domain;
 import lombok.Data;
 import lombok.extern.log4j.Log4j2;
 
+import java.util.Objects;
+
 @Log4j2
 @Data
 public class Tour {
@@ -31,5 +33,30 @@ public class Tour {
 
     public Tour() {
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Tour tour)) return false;
+        return getId() == tour.getId() && Double.compare(getCost(), tour.getCost()) == 0 && getMainTransportId() == tour.getMainTransportId() && getTourTypeId() == tour.getTourTypeId() && Objects.equals(getName(), tour.getName()) && Objects.equals(getMainTransport(), tour.getMainTransport()) && Objects.equals(getTourType(), tour.getTourType());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getName(), getCost(), getMainTransport(), getMainTransportId(), getTourType(), getTourTypeId());
+    }
+
+    @Override
+    public String toString() {
+        return "Tour{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", cost=" + cost +
+                ", mainTransport=" + mainTransport +
+                ", mainTransportId=" + mainTransportId +
+                ", tourType=" + tourType +
+                ", tourTypeId=" + tourTypeId +
+                '}';
     }
 }
