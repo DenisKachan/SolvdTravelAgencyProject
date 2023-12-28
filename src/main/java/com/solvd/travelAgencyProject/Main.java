@@ -1,9 +1,9 @@
 package com.solvd.travelAgencyProject;
 
-import com.solvd.travelAgencyProject.service.ClientAgreementService;
-import com.solvd.travelAgencyProject.service.CountryService;
-import com.solvd.travelAgencyProject.service.TourService;
 import com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole;
+import com.solvd.travelAgencyProject.service.menu.MainMenu;
+import com.solvd.travelAgencyProject.service.services.ClientAgreementService;
+import com.solvd.travelAgencyProject.service.services.TourService;
 
 import java.sql.SQLException;
 
@@ -11,9 +11,12 @@ public class Main {
 
     public static void main(String[] args) {
         try (CreationObjectsFromConsole.scanner) {
+            MainMenu mainMenu = new MainMenu();
+            mainMenu.performSimpleSQLQueryWithEstablishedService();
+            mainMenu.startProgram();
+            ClientAgreementService clientAgreementService = new ClientAgreementService();
             TourService tourService = new TourService();
             tourService.showToursByCriteria();
-            ClientAgreementService clientAgreementService = new ClientAgreementService();
             clientAgreementService.createClientAgreement();
 
         } catch (SQLException e) {

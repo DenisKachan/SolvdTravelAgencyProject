@@ -4,7 +4,6 @@ package com.solvd.travelAgencyProject.service.consoleScanner;
 import com.solvd.travelAgencyProject.domain.*;
 import lombok.extern.log4j.Log4j2;
 
-import java.util.Date;
 import java.util.Scanner;
 
 @Log4j2
@@ -14,7 +13,6 @@ public final class CreationObjectsFromConsole {
 
     public ClientAgreement createClientAgreementFromConsole() {
         ClientAgreement clientAgreement = new ClientAgreement();
-        clientAgreement.setDate(new Date());
         log.info("Enter the conditions of the client agreement");
         clientAgreement.setConditions(scanner.next());
         log.info("Enter the id of the client");
