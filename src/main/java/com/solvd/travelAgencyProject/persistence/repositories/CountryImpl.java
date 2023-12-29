@@ -1,7 +1,7 @@
 package com.solvd.travelAgencyProject.persistence.repositories;
 
-import com.solvd.travelAgencyProject.domain.Discount;
-import com.solvd.travelAgencyProject.persistence.interfaces.DiscountRepository;
+import com.solvd.travelAgencyProject.domain.Country;
+import com.solvd.travelAgencyProject.persistence.interfaces.CountryRepository;
 import com.solvd.travelAgencyProject.persistence.utils.ConnectionPool;
 import com.solvd.travelAgencyProject.persistence.utils.MybatisConfiguration;
 import lombok.extern.log4j.Log4j2;
@@ -10,30 +10,27 @@ import org.apache.ibatis.session.SqlSession;
 import java.sql.*;
 
 @Log4j2
-public class DiscountJDBCImpl implements DiscountRepository {
-
-
+public class CountryImpl implements CountryRepository {
     @Override
-    public Connection create(Discount value) throws SQLException {
+    public Connection create(Country value) throws SQLException {
         if (MybatisConfiguration.flag) {
-            Connection discountConnection = null;
+            Connection countryConnection = null;
             try (SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true)) {
-                discountConnection = session.getConnection();
-                discountConnection.setAutoCommit(false);
-                DiscountRepository discountRepository = session.getMapper(DiscountRepository.class);
-                discountRepository.create(value);
+                countryConnection = session.getConnection();
+                countryConnection.setAutoCommit(false);
+                CountryRepository countryRepository = session.getMapper(CountryRepository.class);
+                countryRepository.create(value);
             } catch (SQLException e) {
                 log.error(e.getMessage());
             }
-            return discountConnection;
+            return countryConnection;
         } else {
             Connection connection = ConnectionPool.getConnectionFromPool();
             connection.setAutoCommit(false);
             try (connection) {
-                PreparedStatement preparedStatement = connection.prepareStatement("INSERT into discount(amount_of_tours, amount_of_discount) \n" +
-                        "VALUES (?, ?);", Statement.RETURN_GENERATED_KEYS);
-                preparedStatement.setInt(1, value.getAmountOfTours());
-                preparedStatement.setDouble(2, value.getAmountOfDiscount());
+                PreparedStatement preparedStatement = connection.prepareStatement("INSERT into country(name) \n" +
+                        "VALUES (?);", Statement.RETURN_GENERATED_KEYS);
+                preparedStatement.setString(1, value.getName());
                 preparedStatement.executeUpdate();
                 ResultSet resultSet = preparedStatement.getGeneratedKeys();
                 while (resultSet.next()) {
@@ -50,14 +47,14 @@ public class DiscountJDBCImpl implements DiscountRepository {
     public void deleteById(int id) {
         if (MybatisConfiguration.flag) {
             try (SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true)) {
-                DiscountRepository discountRepository = session.getMapper(DiscountRepository.class);
-                discountRepository.deleteById(id);
+                CountryRepository countryRepository = session.getMapper(CountryRepository.class);
+                countryRepository.deleteById(id);
             } catch (Exception e) {
                 log.error(e.getMessage());
             }
         } else {
             try (Connection connection = ConnectionPool.getConnectionFromPool()) {
-                PreparedStatement preparedStatement = connection.prepareStatement("delete discount where id = ?");
+                PreparedStatement preparedStatement = connection.prepareStatement("delete country where id = ?");
                 preparedStatement.setInt(1, id);
                 preparedStatement.executeUpdate();
             } catch (SQLException sqlException) {
@@ -67,21 +64,20 @@ public class DiscountJDBCImpl implements DiscountRepository {
     }
 
     @Override
-    public void updateById(Discount value, int id) {
+    public void updateById(Country value, int id) {
         if (MybatisConfiguration.flag) {
             try (SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true)) {
-                DiscountRepository discountRepository = session.getMapper(DiscountRepository.class);
-                discountRepository.updateById(value, id);
+                CountryRepository countryRepository = session.getMapper(CountryRepository.class);
+                countryRepository.updateById(value, id);
             } catch (Exception e) {
                 log.error(e.getMessage());
             }
         } else {
             try (Connection connection = ConnectionPool.getConnectionFromPool()) {
-                PreparedStatement preparedStatement = connection.prepareStatement("Update discount  set amount_of_tours=?, amount_of_discount=? \n" +
+                PreparedStatement preparedStatement = connection.prepareStatement("Update country  set name=? \n" +
                         "where id = ?;");
-                preparedStatement.setInt(1, value.getAmountOfTours());
-                preparedStatement.setDouble(2, value.getAmountOfDiscount());
-                preparedStatement.setInt(3, id);
+                preparedStatement.setString(1, value.getName());
+                preparedStatement.setInt(2, id);
                 preparedStatement.executeUpdate();
             } catch (SQLException sqlException) {
                 log.error(sqlException.getMessage());
@@ -90,27 +86,26 @@ public class DiscountJDBCImpl implements DiscountRepository {
     }
 
     @Override
-    public Discount getById(int id) {
-        Discount discount = new Discount();
+    public Country getById(int id) {
+        Country country = new Country();
         if (MybatisConfiguration.flag) {
             try (SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true)) {
-                DiscountRepository discountRepository = session.getMapper(DiscountRepository.class);
-                discount = discountRepository.getById(id);
+                CountryRepository countryRepository = session.getMapper(CountryRepository.class);
+                country = countryRepository.getById(id);
             } catch (Exception e) {
                 log.error(e.getMessage());
             }
         } else {
             try (Connection connection = ConnectionPool.getConnectionFromPool()) {
-                PreparedStatement preparedStatement = connection.prepareStatement("select * from discount where id=?");
+                PreparedStatement preparedStatement = connection.prepareStatement("select * from country where id=?");
                 preparedStatement.setInt(1, id);
                 ResultSet resultSet = preparedStatement.executeQuery();
-                discount.setId(id);
-                discount.setAmountOfTours(resultSet.getInt("amount_of_tours"));
-                discount.setAmountOfDiscount(resultSet.getDouble("amount_of_discount"));
+                country.setId(id);
+                country.setName(resultSet.getString("name"));
             } catch (SQLException sqlException) {
                 log.error(sqlException.getMessage());
             }
         }
-        return discount;
+        return country;
     }
 }

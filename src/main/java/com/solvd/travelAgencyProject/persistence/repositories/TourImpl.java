@@ -10,7 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import java.sql.*;
 
 @Log4j2
-public class TourJDBCImpl implements TourRepository {
+public class TourImpl implements TourRepository {
     @Override
     public Connection create(Tour value) throws SQLException {
         if (MybatisConfiguration.flag) {

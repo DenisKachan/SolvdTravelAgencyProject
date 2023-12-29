@@ -4,27 +4,27 @@ import com.solvd.travelAgencyProject.persistence.repositories.*;
 
 public class BaseService {
 
-    protected ClientAgreementJDBCImpl clientAgreementJDBC;
-    protected ClientJDBCImpl clientJDBC;
-    protected CountryJDBCImpl countryJDBC;
-    protected DiscountJDBCImpl discountJDBC;
-    protected HotelChainJDBCImpl hotelChainJDBC;
-    protected HotelJDBCImpl hotelJDBC;
-    protected MainTransportJDBCImpl mainTransportJDBC;
-    protected TourJDBCImpl tourJDBC;
-    protected TourTypeJDBCImpl tourTypeJDBC;
-    protected TravelAgentJDBCImpl travelAgentJDBC;
+    protected ClientAgreementImpl clientAgreementJDBC;
+    protected ClientImpl clientJDBC;
+    protected CountryImpl countryJDBC;
+    protected DiscountImpl discountJDBC;
+    protected HotelChainImpl hotelChainJDBC;
+    protected HotelImpl hotelJDBC;
+    protected MainTransportImpl mainTransportJDBC;
+    protected TourImpl tourJDBC;
+    protected TourTypeImpl tourTypeJDBC;
+    protected TravelAgentImpl travelAgentJDBC;
 
     public BaseService() {
-        this.clientAgreementJDBC = new ClientAgreementJDBCImpl();
-        this.clientJDBC = new ClientJDBCImpl();
-        this.countryJDBC = new CountryJDBCImpl();
-        this.discountJDBC = new DiscountJDBCImpl();
-        this.hotelChainJDBC = new HotelChainJDBCImpl();
-        this.hotelJDBC = new HotelJDBCImpl();
-        this.mainTransportJDBC = new MainTransportJDBCImpl();
-        this.tourJDBC = new TourJDBCImpl();
-        this.tourTypeJDBC = new TourTypeJDBCImpl();
-        this.travelAgentJDBC = new TravelAgentJDBCImpl();
+        this.clientAgreementJDBC = new ClientAgreementImpl();
+        this.clientJDBC = new ClientImpl();
+        this.countryJDBC = new CountryImpl();
+        this.discountJDBC = new DiscountImpl();
+        this.hotelChainJDBC = new HotelChainImpl();
+        this.hotelJDBC = new HotelImpl();
+        this.mainTransportJDBC = new MainTransportImpl();
+        this.tourJDBC = new TourImpl();
+        this.tourTypeJDBC = new TourTypeImpl();
+        this.travelAgentJDBC = new TravelAgentImpl();
     }
 }

@@ -10,7 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import java.sql.*;
 
 @Log4j2
-public class HotelChainJDBCImpl implements HotelChainRepository {
+public class HotelChainImpl implements HotelChainRepository {
     @Override
     public Connection create(HotelChain value) throws SQLException {
         if (MybatisConfiguration.flag) {

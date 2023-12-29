@@ -5,7 +5,6 @@ import org.apache.ibatis.annotations.Param;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Optional;
 
 public interface CountryRepository {
 

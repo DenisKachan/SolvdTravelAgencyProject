@@ -2,7 +2,7 @@
 00:39:59.222 [main] INFO  com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole - Enter the name of the country
 18:41:55.752 [main] INFO  com.solvd.travelAgencyProject.service.services.TourService - Enter 'cost' or 'tour type' if you want get tours by established criteria
 18:42:08.193 [main] INFO  com.solvd.travelAgencyProject.service.services.TourService - Enter the maximum cost of the tour
-18:42:11.811 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.TourJDBCImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
+18:42:11.811 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.TourImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
 18:42:11.813 [main] INFO  com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole - Enter the conditions of the client agreement
 18:42:29.740 [main] INFO  com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole - Enter the id of the client
 18:42:32.484 [main] INFO  com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole - Enter the id of the discount
@@ -10,12 +10,12 @@
 18:42:36.984 [main] INFO  com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole - Enter the id of the tour
 18:42:38.650 [main] INFO  com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole - Enter the id of the tour type
 18:42:40.435 [main] INFO  com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole - Enter the id of the main transport
-18:42:42.273 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.ClientJDBCImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
-18:42:42.313 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.DiscountJDBCImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
-18:42:42.342 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.TravelAgentJDBCImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
-18:42:42.371 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.TourJDBCImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
-18:42:42.404 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.TourTypeJDBCImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
-18:42:42.443 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.MainTransportJDBCImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
+18:42:42.273 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.ClientImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
+18:42:42.313 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.DiscountImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
+18:42:42.342 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.TravelAgentImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
+18:42:42.371 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.TourImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
+18:42:42.404 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.TourTypeImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
+18:42:42.443 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.MainTransportImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
 19:13:23.029 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
 19:13:23.031 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the service you want to interact with
 19:18:24.390 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the service class
@@ -28,15 +28,15 @@
 19:20:17.623 [main] INFO  com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole - Enter the name of the client
 19:20:19.133 [main] INFO  com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole - Enter the surname of the client
 19:20:20.625 [main] INFO  com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole - Enter the id of the discount
-19:20:22.331 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.DiscountJDBCImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
+19:20:22.331 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.DiscountImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
 20:15:21.379 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
 20:20:51.663 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
 20:20:54.284 [main] INFO  com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole - Enter the name of the tour
 20:20:55.811 [main] INFO  com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole - Enter the cost of the tour
 20:20:57.821 [main] INFO  com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole - Enter the id og the tour type
 20:20:59.458 [main] INFO  com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole - Enter the id of the main transport
-20:21:01.121 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.MainTransportJDBCImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
-20:21:01.171 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.TourTypeJDBCImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
+20:21:01.121 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.MainTransportImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
+20:21:01.171 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.TourTypeImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
 20:21:16.275 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
 20:22:38.569 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
 20:33:29.046 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
@@ -47,12 +47,12 @@
 20:33:36.375 [main] INFO  com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole - Enter the id of the tour
 20:33:37.370 [main] INFO  com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole - Enter the id of the tour type
 20:33:38.347 [main] INFO  com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole - Enter the id of the main transport
-20:33:39.910 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.ClientJDBCImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
-20:33:39.960 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.DiscountJDBCImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
-20:33:40.000 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.TravelAgentJDBCImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
-20:33:40.031 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.TourJDBCImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
-20:33:40.064 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.TourTypeJDBCImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
-20:33:40.096 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.MainTransportJDBCImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
+20:33:39.910 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.ClientImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
+20:33:39.960 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.DiscountImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
+20:33:40.000 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.TravelAgentImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
+20:33:40.031 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.TourImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
+20:33:40.064 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.TourTypeImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
+20:33:40.096 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.MainTransportImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
 20:33:52.761 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
 20:33:58.479 [main] INFO  com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole - Enter the conditions of the client agreement
 20:34:00.296 [main] INFO  com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole - Enter the id of the client
@@ -61,27 +61,27 @@
 20:34:03.705 [main] INFO  com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole - Enter the id of the tour
 20:34:04.707 [main] INFO  com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole - Enter the id of the tour type
 20:34:05.711 [main] INFO  com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole - Enter the id of the main transport
-20:34:07.238 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.ClientJDBCImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
-20:34:07.287 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.DiscountJDBCImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
-20:34:07.328 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.TravelAgentJDBCImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
-20:34:07.357 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.TourJDBCImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
-20:34:07.394 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.TourTypeJDBCImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
-20:34:07.430 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.MainTransportJDBCImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
+20:34:07.238 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.ClientImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
+20:34:07.287 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.DiscountImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
+20:34:07.328 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.TravelAgentImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
+20:34:07.357 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.TourImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
+20:34:07.394 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.TourTypeImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
+20:34:07.430 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.MainTransportImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
 15:41:06.704 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the service class
 15:41:27.740 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
 15:41:30.468 [main] INFO  com.solvd.travelAgencyProject.service.services.TourService - Enter 'cost' or 'tour type' if you want get tours by established criteria
 15:41:37.228 [main] INFO  com.solvd.travelAgencyProject.service.services.TourService - Enter the maximum cost of the tour
-15:41:41.773 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.TourJDBCImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
+15:41:41.773 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.TourImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
 15:41:41.774 [main] INFO  com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole - Enter the conditions of the client agreement
 15:41:59.110 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
 15:42:03.611 [main] INFO  com.solvd.travelAgencyProject.service.services.TourService - Enter 'cost' or 'tour type' if you want get tours by established criteria
 15:42:06.931 [main] INFO  com.solvd.travelAgencyProject.service.services.TourService - Enter the maximum cost of the tour
-15:42:09.987 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.TourJDBCImpl - Cannot invoke "org.apache.ibatis.session.SqlSessionFactory.openSession(boolean)" because the return value of "com.solvd.travelAgencyProject.persistence.utils.MybatisConfiguration.getSessionFactory()" is null
+15:42:09.987 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.TourImpl - Cannot invoke "org.apache.ibatis.session.SqlSessionFactory.openSession(boolean)" because the return value of "com.solvd.travelAgencyProject.persistence.utils.MybatisConfiguration.getSessionFactory()" is null
 15:42:09.987 [main] INFO  com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole - Enter the conditions of the client agreement
 15:43:12.191 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
 15:43:16.420 [main] INFO  com.solvd.travelAgencyProject.service.services.TourService - Enter 'cost' or 'tour type' if you want get tours by established criteria
 15:43:18.814 [main] INFO  com.solvd.travelAgencyProject.service.services.TourService - Enter the maximum cost of the tour
-15:43:20.834 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.TourJDBCImpl - 
+15:43:20.834 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.TourImpl -
 ### Error querying database.  Cause: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
 ### The error may exist in mappers/TourMapper.xml
 ### The error may involve com.solvd.travelAgencyProject.persistence.interfaces.TourRepository.showToursWithArrangedCost

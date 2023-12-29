@@ -10,7 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import java.sql.*;
 
 @Log4j2
-public class ClientAgreementJDBCImpl implements ClientAgreementRepository {
+public class ClientAgreementImpl implements ClientAgreementRepository {
 
     @Override
     public Connection create(ClientAgreement value) throws SQLException {

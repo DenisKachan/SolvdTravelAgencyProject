@@ -1,7 +1,7 @@
 package com.solvd.travelAgencyProject.persistence.repositories;
 
-import com.solvd.travelAgencyProject.domain.TourType;
-import com.solvd.travelAgencyProject.persistence.interfaces.TourTypeRepository;
+import com.solvd.travelAgencyProject.domain.Hotel;
+import com.solvd.travelAgencyProject.persistence.interfaces.HotelRepository;
 import com.solvd.travelAgencyProject.persistence.utils.ConnectionPool;
 import com.solvd.travelAgencyProject.persistence.utils.MybatisConfiguration;
 import lombok.extern.log4j.Log4j2;
@@ -10,28 +10,30 @@ import org.apache.ibatis.session.SqlSession;
 import java.sql.*;
 
 @Log4j2
-public class TourTypeJDBCImpl implements TourTypeRepository {
-
+public class HotelImpl implements HotelRepository {
     @Override
-    public Connection create(TourType value) throws SQLException {
+    public Connection create(Hotel value) throws SQLException {
         if (MybatisConfiguration.flag) {
-            Connection tourTypeConnection = null;
+            Connection hotelConnection = null;
             try (SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true)) {
-                tourTypeConnection = session.getConnection();
-                tourTypeConnection.setAutoCommit(false);
-                TourTypeRepository tourTypeRepository = session.getMapper(TourTypeRepository.class);
-                tourTypeRepository.create(value);
+                hotelConnection = session.getConnection();
+                hotelConnection.setAutoCommit(false);
+                HotelRepository hotelRepository = session.getMapper(HotelRepository.class);
+                hotelRepository.create(value);
             } catch (SQLException e) {
                 log.error(e.getMessage());
             }
-            return tourTypeConnection;
+            return hotelConnection;
         } else {
             Connection connection = ConnectionPool.getConnectionFromPool();
             connection.setAutoCommit(false);
             try (connection) {
-                PreparedStatement preparedStatement = connection.prepareStatement("INSERT into tour_type(name) \n" +
-                        "VALUES ('sea');", Statement.RETURN_GENERATED_KEYS);
+                PreparedStatement preparedStatement = connection.prepareStatement("INSERT into hotel(name, capacity, phone_number, hotel_chain_identificator) \n" +
+                        "VALUES (?, ?,?,?);", Statement.RETURN_GENERATED_KEYS);
                 preparedStatement.setString(1, value.getName());
+                preparedStatement.setInt(2, value.getCapacity());
+                preparedStatement.setInt(3, value.getTelephoneNumber());
+                preparedStatement.setInt(4, value.getHotelChain().getId());
                 preparedStatement.executeUpdate();
                 ResultSet resultSet = preparedStatement.getGeneratedKeys();
                 while (resultSet.next()) {
@@ -48,14 +50,14 @@ public class TourTypeJDBCImpl implements TourTypeRepository {
     public void deleteById(int id) {
         if (MybatisConfiguration.flag) {
             try (SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true)) {
-                TourTypeRepository tourTypeRepository = session.getMapper(TourTypeRepository.class);
-                tourTypeRepository.deleteById(id);
+                HotelRepository hotelRepository = session.getMapper(HotelRepository.class);
+                hotelRepository.deleteById(id);
             } catch (Exception e) {
                 log.error(e.getMessage());
             }
         } else {
             try (Connection connection = ConnectionPool.getConnectionFromPool()) {
-                PreparedStatement preparedStatement = connection.prepareStatement("delete tour_type where id = ?");
+                PreparedStatement preparedStatement = connection.prepareStatement("delete hotel where id = ?");
                 preparedStatement.setInt(1, id);
                 preparedStatement.executeUpdate();
             } catch (SQLException sqlException) {
@@ -65,20 +67,23 @@ public class TourTypeJDBCImpl implements TourTypeRepository {
     }
 
     @Override
-    public void updateById(TourType value, int id) {
+    public void updateById(Hotel value, int id) {
         if (MybatisConfiguration.flag) {
             try (SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true)) {
-                TourTypeRepository tourTypeRepository = session.getMapper(TourTypeRepository.class);
-                tourTypeRepository.updateById(value, id);
+                HotelRepository hotelRepository = session.getMapper(HotelRepository.class);
+                hotelRepository.updateById(value, id);
             } catch (Exception e) {
                 log.error(e.getMessage());
             }
         } else {
             try (Connection connection = ConnectionPool.getConnectionFromPool()) {
-                PreparedStatement preparedStatement = connection.prepareStatement("Update tour_type  set name=? \n" +
+                PreparedStatement preparedStatement = connection.prepareStatement("Update hotel  set name=?, capacity=?, phone_number=?, hotel_chain_identificator=? \n" +
                         "where id = ?;");
                 preparedStatement.setString(1, value.getName());
-                preparedStatement.setInt(2, id);
+                preparedStatement.setInt(2, value.getCapacity());
+                preparedStatement.setInt(3, value.getTelephoneNumber());
+                preparedStatement.setInt(4, value.getHotelChain().getId());
+                preparedStatement.setInt(5, id);
                 preparedStatement.executeUpdate();
             } catch (SQLException sqlException) {
                 log.error(sqlException.getMessage());
@@ -87,26 +92,25 @@ public class TourTypeJDBCImpl implements TourTypeRepository {
     }
 
     @Override
-    public TourType getById(int id) {
-        TourType tourType = new TourType();
+    public Hotel getById(int id) {
+        Hotel hotel = new Hotel();
         if (MybatisConfiguration.flag) {
             try (SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true)) {
-                TourTypeRepository tourTypeRepository = session.getMapper(TourTypeRepository.class);
-                tourType = tourTypeRepository.getById(id);
+                HotelRepository hotelRepository = session.getMapper(HotelRepository.class);
+                hotel = hotelRepository.getById(id);
             } catch (Exception e) {
                 log.error(e.getMessage());
             }
         } else {
             try (Connection connection = ConnectionPool.getConnectionFromPool()) {
-                PreparedStatement preparedStatement = connection.prepareStatement("select * from tour_type where id=?");
+                PreparedStatement preparedStatement = connection.prepareStatement("select * from hotel where id=?");
                 preparedStatement.setInt(1, id);
                 ResultSet resultSet = preparedStatement.executeQuery();
-                tourType.setId(id);
-                tourType.setName(resultSet.getString("name"));
+                hotel.setId(id);
             } catch (SQLException sqlException) {
                 log.error(sqlException.getMessage());
             }
         }
-        return tourType;
+        return hotel;
     }
 }

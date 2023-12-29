@@ -1,7 +1,7 @@
 package com.solvd.travelAgencyProject.persistence.repositories;
 
-import com.solvd.travelAgencyProject.domain.Country;
-import com.solvd.travelAgencyProject.persistence.interfaces.CountryRepository;
+import com.solvd.travelAgencyProject.domain.MainTransport;
+import com.solvd.travelAgencyProject.persistence.interfaces.MainTransportRepository;
 import com.solvd.travelAgencyProject.persistence.utils.ConnectionPool;
 import com.solvd.travelAgencyProject.persistence.utils.MybatisConfiguration;
 import lombok.extern.log4j.Log4j2;
@@ -10,25 +10,25 @@ import org.apache.ibatis.session.SqlSession;
 import java.sql.*;
 
 @Log4j2
-public class CountryJDBCImpl implements CountryRepository {
+public class MainTransportImpl implements MainTransportRepository {
     @Override
-    public Connection create(Country value) throws SQLException {
+    public Connection create(MainTransport value) throws SQLException {
         if (MybatisConfiguration.flag) {
-            Connection countryConnection = null;
+            Connection mainTransportConnection = null;
             try (SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true)) {
-                countryConnection = session.getConnection();
-                countryConnection.setAutoCommit(false);
-                CountryRepository countryRepository = session.getMapper(CountryRepository.class);
-                countryRepository.create(value);
+                mainTransportConnection = session.getConnection();
+                mainTransportConnection.setAutoCommit(false);
+                MainTransportRepository mainTransportRepository = session.getMapper(MainTransportRepository.class);
+                mainTransportRepository.create(value);
             } catch (SQLException e) {
                 log.error(e.getMessage());
             }
-            return countryConnection;
+            return mainTransportConnection;
         } else {
             Connection connection = ConnectionPool.getConnectionFromPool();
             connection.setAutoCommit(false);
             try (connection) {
-                PreparedStatement preparedStatement = connection.prepareStatement("INSERT into country(name) \n" +
+                PreparedStatement preparedStatement = connection.prepareStatement("INSERT into main_transport(name) \n" +
                         "VALUES (?);", Statement.RETURN_GENERATED_KEYS);
                 preparedStatement.setString(1, value.getName());
                 preparedStatement.executeUpdate();
@@ -47,14 +47,14 @@ public class CountryJDBCImpl implements CountryRepository {
     public void deleteById(int id) {
         if (MybatisConfiguration.flag) {
             try (SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true)) {
-                CountryRepository countryRepository = session.getMapper(CountryRepository.class);
-                countryRepository.deleteById(id);
+                MainTransportRepository mainTransportRepository = session.getMapper(MainTransportRepository.class);
+                mainTransportRepository.deleteById(id);
             } catch (Exception e) {
                 log.error(e.getMessage());
             }
         } else {
             try (Connection connection = ConnectionPool.getConnectionFromPool()) {
-                PreparedStatement preparedStatement = connection.prepareStatement("delete country where id = ?");
+                PreparedStatement preparedStatement = connection.prepareStatement("delete main_transport where id = ?");
                 preparedStatement.setInt(1, id);
                 preparedStatement.executeUpdate();
             } catch (SQLException sqlException) {
@@ -64,17 +64,17 @@ public class CountryJDBCImpl implements CountryRepository {
     }
 
     @Override
-    public void updateById(Country value, int id) {
+    public void updateById(MainTransport value, int id) {
         if (MybatisConfiguration.flag) {
             try (SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true)) {
-                CountryRepository countryRepository = session.getMapper(CountryRepository.class);
-                countryRepository.updateById(value, id);
+                MainTransportRepository mainTransportRepository = session.getMapper(MainTransportRepository.class);
+                mainTransportRepository.updateById(value, id);
             } catch (Exception e) {
                 log.error(e.getMessage());
             }
         } else {
             try (Connection connection = ConnectionPool.getConnectionFromPool()) {
-                PreparedStatement preparedStatement = connection.prepareStatement("Update country  set name=? \n" +
+                PreparedStatement preparedStatement = connection.prepareStatement("Update main_transport  set name=? \n" +
                         "where id = ?;");
                 preparedStatement.setString(1, value.getName());
                 preparedStatement.setInt(2, id);
@@ -83,29 +83,30 @@ public class CountryJDBCImpl implements CountryRepository {
                 log.error(sqlException.getMessage());
             }
         }
+
     }
 
     @Override
-    public Country getById(int id) {
-        Country country = new Country();
+    public MainTransport getById(int id) {
+        MainTransport mainTransport = new MainTransport();
         if (MybatisConfiguration.flag) {
             try (SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true)) {
-                CountryRepository countryRepository = session.getMapper(CountryRepository.class);
-                country = countryRepository.getById(id);
+                MainTransportRepository mainTransportRepository = session.getMapper(MainTransportRepository.class);
+                mainTransport = mainTransportRepository.getById(id);
             } catch (Exception e) {
                 log.error(e.getMessage());
             }
         } else {
             try (Connection connection = ConnectionPool.getConnectionFromPool()) {
-                PreparedStatement preparedStatement = connection.prepareStatement("select * from country where id=?");
+                PreparedStatement preparedStatement = connection.prepareStatement("select * from main_transport where id=?");
                 preparedStatement.setInt(1, id);
                 ResultSet resultSet = preparedStatement.executeQuery();
-                country.setId(id);
-                country.setName(resultSet.getString("name"));
+                mainTransport.setId(id);
+                mainTransport.setName(resultSet.getString("name"));
             } catch (SQLException sqlException) {
                 log.error(sqlException.getMessage());
             }
         }
-        return country;
+        return mainTransport;
     }
 }
