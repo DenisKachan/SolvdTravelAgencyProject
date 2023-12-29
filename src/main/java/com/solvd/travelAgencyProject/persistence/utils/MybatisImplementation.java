@@ -17,7 +17,7 @@ public class MybatisImplementation {
 
     static {
         try (InputStream inputStream = Resources.getResourceAsStream("mybatis.config.xml")) {
-            SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder()
+            sessionFactory = new SqlSessionFactoryBuilder()
                     .build(inputStream);
         } catch (IOException e) {
             throw new RuntimeException(e);

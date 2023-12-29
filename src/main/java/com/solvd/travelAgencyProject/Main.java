@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) {
         try (CreationObjectsFromConsole.scanner) {
             MainMenu mainMenu = new MainMenu();
-            mainMenu.performSimpleSQLQueryWithEstablishedService();
+           // mainMenu.performSimpleSQLQueryWithEstablishedService();
             mainMenu.startProgram();
             ClientAgreementService clientAgreementService = new ClientAgreementService();
             TourService tourService = new TourService();

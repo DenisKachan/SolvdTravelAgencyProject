@@ -21,7 +21,6 @@ public class MainMenu {
         log.info("PLease enter 'mybatis' if you want to interact with database using this framework" +
                 "or press any other key if it is not needed");
         String option = CreationObjectsFromConsole.scanner.next();
-        MybatisImplementation mybatisImplementation = new MybatisImplementation();
         if (option.equals("mybatis")) {
             MybatisImplementation.flag = true;
         }

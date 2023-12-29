@@ -67,3 +67,24 @@
 20:34:07.357 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.TourJDBCImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
 20:34:07.394 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.TourTypeJDBCImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
 20:34:07.430 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.MainTransportJDBCImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
+15:41:06.704 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the service class
+15:41:27.740 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+15:41:30.468 [main] INFO  com.solvd.travelAgencyProject.service.services.TourService - Enter 'cost' or 'tour type' if you want get tours by established criteria
+15:41:37.228 [main] INFO  com.solvd.travelAgencyProject.service.services.TourService - Enter the maximum cost of the tour
+15:41:41.773 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.TourJDBCImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
+15:41:41.774 [main] INFO  com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole - Enter the conditions of the client agreement
+15:41:59.110 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+15:42:03.611 [main] INFO  com.solvd.travelAgencyProject.service.services.TourService - Enter 'cost' or 'tour type' if you want get tours by established criteria
+15:42:06.931 [main] INFO  com.solvd.travelAgencyProject.service.services.TourService - Enter the maximum cost of the tour
+15:42:09.987 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.TourJDBCImpl - Cannot invoke "org.apache.ibatis.session.SqlSessionFactory.openSession(boolean)" because the return value of "com.solvd.travelAgencyProject.persistence.utils.MybatisImplementation.getSessionFactory()" is null
+15:42:09.987 [main] INFO  com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole - Enter the conditions of the client agreement
+15:43:12.191 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+15:43:16.420 [main] INFO  com.solvd.travelAgencyProject.service.services.TourService - Enter 'cost' or 'tour type' if you want get tours by established criteria
+15:43:18.814 [main] INFO  com.solvd.travelAgencyProject.service.services.TourService - Enter the maximum cost of the tour
+15:43:20.834 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.TourJDBCImpl - 
+### Error querying database.  Cause: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+### The error may exist in mappers/TourMapper.xml
+### The error may involve com.solvd.travelAgencyProject.persistence.interfaces.TourRepository.showToursWithArrangedCost
+### The error occurred while executing a query
+### Cause: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+15:43:20.835 [main] INFO  com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole - Enter the conditions of the client agreement
