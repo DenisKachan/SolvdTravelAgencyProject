@@ -1,11 +1,9 @@
 package com.solvd.travelAgencyProject.persistence.repositories;
 
 import com.solvd.travelAgencyProject.domain.Client;
-import com.solvd.travelAgencyProject.domain.ClientAgreement;
-import com.solvd.travelAgencyProject.persistence.interfaces.ClientAgreementRepository;
 import com.solvd.travelAgencyProject.persistence.interfaces.ClientRepository;
 import com.solvd.travelAgencyProject.persistence.utils.ConnectionPool;
-import com.solvd.travelAgencyProject.persistence.utils.MybatisImplementation;
+import com.solvd.travelAgencyProject.persistence.utils.MybatisConfiguration;
 import lombok.extern.log4j.Log4j2;
 import org.apache.ibatis.session.SqlSession;
 
@@ -15,9 +13,9 @@ import java.sql.*;
 public class ClientJDBCImpl implements ClientRepository {
     @Override
     public Connection create(Client value) throws SQLException {
-        if (MybatisImplementation.flag) {
+        if (MybatisConfiguration.flag) {
             Connection clientConnection = null;
-            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+            try (SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true)) {
                 clientConnection = session.getConnection();
                 clientConnection.setAutoCommit(false);
                 ClientRepository clientRepository = session.getMapper(ClientRepository.class);
@@ -50,8 +48,8 @@ public class ClientJDBCImpl implements ClientRepository {
 
     @Override
     public void deleteById(int id) {
-        if (MybatisImplementation.flag) {
-            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+        if (MybatisConfiguration.flag) {
+            try (SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true)) {
                 ClientRepository clientRepository = session.getMapper(ClientRepository.class);
                 clientRepository.deleteById(id);
             } catch (Exception e) {
@@ -71,8 +69,8 @@ public class ClientJDBCImpl implements ClientRepository {
 
     @Override
     public void updateById(Client value, int id) {
-        if (MybatisImplementation.flag) {
-            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+        if (MybatisConfiguration.flag) {
+            try (SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true)) {
                 ClientRepository clientRepository = session.getMapper(ClientRepository.class);
                 clientRepository.updateById(value, id);
             } catch (Exception e) {
@@ -97,8 +95,8 @@ public class ClientJDBCImpl implements ClientRepository {
     @Override
     public Client getById(int id) {
         Client client = new Client();
-        if (MybatisImplementation.flag) {
-            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+        if (MybatisConfiguration.flag) {
+            try (SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true)) {
                 ClientRepository clientRepository = session.getMapper(ClientRepository.class);
                 client = clientRepository.getById(id);
             } catch (Exception e) {

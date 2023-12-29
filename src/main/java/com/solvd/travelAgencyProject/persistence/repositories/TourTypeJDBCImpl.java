@@ -1,11 +1,9 @@
 package com.solvd.travelAgencyProject.persistence.repositories;
 
-import com.solvd.travelAgencyProject.domain.ClientAgreement;
 import com.solvd.travelAgencyProject.domain.TourType;
-import com.solvd.travelAgencyProject.persistence.interfaces.ClientAgreementRepository;
 import com.solvd.travelAgencyProject.persistence.interfaces.TourTypeRepository;
 import com.solvd.travelAgencyProject.persistence.utils.ConnectionPool;
-import com.solvd.travelAgencyProject.persistence.utils.MybatisImplementation;
+import com.solvd.travelAgencyProject.persistence.utils.MybatisConfiguration;
 import lombok.extern.log4j.Log4j2;
 import org.apache.ibatis.session.SqlSession;
 
@@ -16,9 +14,9 @@ public class TourTypeJDBCImpl implements TourTypeRepository {
 
     @Override
     public Connection create(TourType value) throws SQLException {
-        if (MybatisImplementation.flag) {
+        if (MybatisConfiguration.flag) {
             Connection tourTypeConnection = null;
-            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+            try (SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true)) {
                 tourTypeConnection = session.getConnection();
                 tourTypeConnection.setAutoCommit(false);
                 TourTypeRepository tourTypeRepository = session.getMapper(TourTypeRepository.class);
@@ -48,8 +46,8 @@ public class TourTypeJDBCImpl implements TourTypeRepository {
 
     @Override
     public void deleteById(int id) {
-        if (MybatisImplementation.flag) {
-            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+        if (MybatisConfiguration.flag) {
+            try (SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true)) {
                 TourTypeRepository tourTypeRepository = session.getMapper(TourTypeRepository.class);
                 tourTypeRepository.deleteById(id);
             } catch (Exception e) {
@@ -68,8 +66,8 @@ public class TourTypeJDBCImpl implements TourTypeRepository {
 
     @Override
     public void updateById(TourType value, int id) {
-        if (MybatisImplementation.flag) {
-            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+        if (MybatisConfiguration.flag) {
+            try (SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true)) {
                 TourTypeRepository tourTypeRepository = session.getMapper(TourTypeRepository.class);
                 tourTypeRepository.updateById(value, id);
             } catch (Exception e) {
@@ -91,8 +89,8 @@ public class TourTypeJDBCImpl implements TourTypeRepository {
     @Override
     public TourType getById(int id) {
         TourType tourType = new TourType();
-        if (MybatisImplementation.flag) {
-            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+        if (MybatisConfiguration.flag) {
+            try (SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true)) {
                 TourTypeRepository tourTypeRepository = session.getMapper(TourTypeRepository.class);
                 tourType = tourTypeRepository.getById(id);
             } catch (Exception e) {

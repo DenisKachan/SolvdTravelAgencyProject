@@ -3,7 +3,7 @@ package com.solvd.travelAgencyProject.persistence.repositories;
 import com.solvd.travelAgencyProject.domain.ClientAgreement;
 import com.solvd.travelAgencyProject.persistence.interfaces.ClientAgreementRepository;
 import com.solvd.travelAgencyProject.persistence.utils.ConnectionPool;
-import com.solvd.travelAgencyProject.persistence.utils.MybatisImplementation;
+import com.solvd.travelAgencyProject.persistence.utils.MybatisConfiguration;
 import lombok.extern.log4j.Log4j2;
 import org.apache.ibatis.session.SqlSession;
 
@@ -14,9 +14,9 @@ public class ClientAgreementJDBCImpl implements ClientAgreementRepository {
 
     @Override
     public Connection create(ClientAgreement value) throws SQLException {
-        if (MybatisImplementation.flag) {
+        if (MybatisConfiguration.flag) {
             Connection clientAgreementConnection = null;
-            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+            try (SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true)) {
                 clientAgreementConnection = session.getConnection();
                 clientAgreementConnection.setAutoCommit(false);
                 ClientAgreementRepository clientAgreementRepository = session.getMapper(ClientAgreementRepository.class);
@@ -53,8 +53,8 @@ public class ClientAgreementJDBCImpl implements ClientAgreementRepository {
 
     @Override
     public void deleteById(int id) {
-        if (MybatisImplementation.flag) {
-            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+        if (MybatisConfiguration.flag) {
+            try (SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true)) {
                 ClientAgreementRepository clientAgreementRepository = session.getMapper(ClientAgreementRepository.class);
                 clientAgreementRepository.deleteById(id);
             } catch (Exception e) {
@@ -73,8 +73,8 @@ public class ClientAgreementJDBCImpl implements ClientAgreementRepository {
 
     @Override
     public void updateById(ClientAgreement value, int id) {
-        if (MybatisImplementation.flag) {
-            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+        if (MybatisConfiguration.flag) {
+            try (SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true)) {
                 ClientAgreementRepository clientAgreementRepository = session.getMapper(ClientAgreementRepository.class);
                 clientAgreementRepository.updateById(value, id);
             } catch (Exception e) {
@@ -102,8 +102,8 @@ public class ClientAgreementJDBCImpl implements ClientAgreementRepository {
     @Override
     public ClientAgreement getById(int id) {
         ClientAgreement clientAgreement = new ClientAgreement();
-        if (MybatisImplementation.flag) {
-            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+        if (MybatisConfiguration.flag) {
+            try (SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true)) {
                 ClientAgreementRepository clientAgreementRepository = session.getMapper(ClientAgreementRepository.class);
                 clientAgreement = clientAgreementRepository.getById(id);
             } catch (Exception e) {

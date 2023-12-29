@@ -1,6 +1,6 @@
 package com.solvd.travelAgencyProject.service.menu;
 
-import com.solvd.travelAgencyProject.persistence.utils.MybatisImplementation;
+import com.solvd.travelAgencyProject.persistence.utils.MybatisConfiguration;
 import com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole;
 import com.solvd.travelAgencyProject.service.services.BaseService;
 import lombok.extern.log4j.Log4j2;
@@ -22,7 +22,7 @@ public class MainMenu {
                 "or press any other key if it is not needed");
         String option = CreationObjectsFromConsole.scanner.next();
         if (option.equals("mybatis")) {
-            MybatisImplementation.flag = true;
+            MybatisConfiguration.flag = true;
         }
     }
 

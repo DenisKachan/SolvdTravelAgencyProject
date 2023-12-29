@@ -76,7 +76,7 @@
 15:41:59.110 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
 15:42:03.611 [main] INFO  com.solvd.travelAgencyProject.service.services.TourService - Enter 'cost' or 'tour type' if you want get tours by established criteria
 15:42:06.931 [main] INFO  com.solvd.travelAgencyProject.service.services.TourService - Enter the maximum cost of the tour
-15:42:09.987 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.TourJDBCImpl - Cannot invoke "org.apache.ibatis.session.SqlSessionFactory.openSession(boolean)" because the return value of "com.solvd.travelAgencyProject.persistence.utils.MybatisImplementation.getSessionFactory()" is null
+15:42:09.987 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.TourJDBCImpl - Cannot invoke "org.apache.ibatis.session.SqlSessionFactory.openSession(boolean)" because the return value of "com.solvd.travelAgencyProject.persistence.utils.MybatisConfiguration.getSessionFactory()" is null
 15:42:09.987 [main] INFO  com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole - Enter the conditions of the client agreement
 15:43:12.191 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
 15:43:16.420 [main] INFO  com.solvd.travelAgencyProject.service.services.TourService - Enter 'cost' or 'tour type' if you want get tours by established criteria
