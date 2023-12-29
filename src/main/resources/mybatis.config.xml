@@ -16,5 +16,15 @@
         </environment>
     </environments>
     <mappers>
+        <mapper resource="mappers/ClientAgreementMapper.xml"/>
+        <mapper resource="mappers/ClientMapper.xml"/>
+        <mapper resource="mappers/CountryMapper.xml"/>
+        <mapper resource="mappers/DiscountMapper.xml"/>
+        <mapper resource="mappers/HotelChainMapper.xml"/>
+        <mapper resource="mappers/HotelMapper.xml"/>
+        <mapper resource="mappers/MainTransportMapper.xml"/>
+        <mapper resource="mappers/TourMapper.xml"/>
+        <mapper resource="mappers/TourTypeMapper.xml"/>
+        <mapper resource="mappers/TravelAgentMapper.xml"/>
     </mappers>
 </configuration>

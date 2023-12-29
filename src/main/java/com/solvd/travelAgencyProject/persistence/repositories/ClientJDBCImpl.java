@@ -1,6 +1,8 @@
 package com.solvd.travelAgencyProject.persistence.repositories;
 
 import com.solvd.travelAgencyProject.domain.Client;
+import com.solvd.travelAgencyProject.domain.ClientAgreement;
+import com.solvd.travelAgencyProject.persistence.interfaces.ClientAgreementRepository;
 import com.solvd.travelAgencyProject.persistence.interfaces.ClientRepository;
 import com.solvd.travelAgencyProject.persistence.utils.ConnectionPool;
 import com.solvd.travelAgencyProject.persistence.utils.MybatisImplementation;
@@ -14,11 +16,15 @@ public class ClientJDBCImpl implements ClientRepository {
     @Override
     public Connection create(Client value) throws SQLException {
         if (MybatisImplementation.flag) {
-            SqlSession session = MybatisImplementation.getSessionFactory().openSession(true);
-            Connection clientConnection = session.getConnection();
-            clientConnection.setAutoCommit(false);
-            ClientRepository clientRepository = session.getMapper(ClientRepository.class);
-            clientRepository.create(value);
+            Connection clientConnection = null;
+            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+                clientConnection = session.getConnection();
+                clientConnection.setAutoCommit(false);
+                ClientRepository clientRepository = session.getMapper(ClientRepository.class);
+                clientRepository.create(value);
+            } catch (SQLException e) {
+                log.error(e.getMessage());
+            }
             return clientConnection;
         } else {
             Connection connection = ConnectionPool.getConnectionFromPool();
@@ -45,9 +51,12 @@ public class ClientJDBCImpl implements ClientRepository {
     @Override
     public void deleteById(int id) {
         if (MybatisImplementation.flag) {
-            SqlSession session = MybatisImplementation.getSessionFactory().openSession(true);
-            ClientRepository clientRepository = session.getMapper(ClientRepository.class);
-            clientRepository.deleteById(id);
+            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+                ClientRepository clientRepository = session.getMapper(ClientRepository.class);
+                clientRepository.deleteById(id);
+            } catch (Exception e) {
+                log.error(e.getMessage());
+            }
         } else {
             try (Connection connection = ConnectionPool.getConnectionFromPool()) {
                 PreparedStatement preparedStatement = connection.prepareStatement("delete client where id = ?");
@@ -63,9 +72,12 @@ public class ClientJDBCImpl implements ClientRepository {
     @Override
     public void updateById(Client value, int id) {
         if (MybatisImplementation.flag) {
-            SqlSession session = MybatisImplementation.getSessionFactory().openSession(true);
-            ClientRepository clientRepository = session.getMapper(ClientRepository.class);
-            clientRepository.updateById(value, id);
+            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+                ClientRepository clientRepository = session.getMapper(ClientRepository.class);
+                clientRepository.updateById(value, id);
+            } catch (Exception e) {
+                log.error(e.getMessage());
+            }
         } else {
             try (Connection connection = ConnectionPool.getConnectionFromPool()) {
                 PreparedStatement preparedStatement = connection.prepareStatement("Update client  set name=?, surname=?, phone_number=?, discount_id=? \n" +
@@ -84,12 +96,15 @@ public class ClientJDBCImpl implements ClientRepository {
 
     @Override
     public Client getById(int id) {
+        Client client = new Client();
         if (MybatisImplementation.flag) {
-            SqlSession session = MybatisImplementation.getSessionFactory().openSession(true);
-            ClientRepository clientRepository = session.getMapper(ClientRepository.class);
-            return clientRepository.getById(id);
+            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+                ClientRepository clientRepository = session.getMapper(ClientRepository.class);
+                client = clientRepository.getById(id);
+            } catch (Exception e) {
+                log.error(e.getMessage());
+            }
         } else {
-            Client client = new Client();
             try (Connection connection = ConnectionPool.getConnectionFromPool()) {
                 PreparedStatement preparedStatement = connection.prepareStatement("select * from client where id=?");
                 preparedStatement.setInt(1, id);
@@ -102,7 +117,7 @@ public class ClientJDBCImpl implements ClientRepository {
             } catch (SQLException sqlException) {
                 log.error(sqlException.getMessage());
             }
-            return client;
         }
+        return client;
     }
 }

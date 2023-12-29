@@ -1,6 +1,8 @@
 package com.solvd.travelAgencyProject.persistence.repositories;
 
+import com.solvd.travelAgencyProject.domain.ClientAgreement;
 import com.solvd.travelAgencyProject.domain.Discount;
+import com.solvd.travelAgencyProject.persistence.interfaces.ClientAgreementRepository;
 import com.solvd.travelAgencyProject.persistence.interfaces.DiscountRepository;
 import com.solvd.travelAgencyProject.persistence.utils.ConnectionPool;
 import com.solvd.travelAgencyProject.persistence.utils.MybatisImplementation;
@@ -16,11 +18,15 @@ public class DiscountJDBCImpl implements DiscountRepository {
     @Override
     public Connection create(Discount value) throws SQLException {
         if (MybatisImplementation.flag) {
-            SqlSession session = MybatisImplementation.getSessionFactory().openSession(true);
-            Connection discountConnection = session.getConnection();
-            discountConnection.setAutoCommit(false);
-            DiscountRepository discountRepository = session.getMapper(DiscountRepository.class);
-            discountRepository.create(value);
+            Connection discountConnection = null;
+            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+                discountConnection = session.getConnection();
+                discountConnection.setAutoCommit(false);
+                DiscountRepository discountRepository = session.getMapper(DiscountRepository.class);
+                discountRepository.create(value);
+            } catch (SQLException e) {
+                log.error(e.getMessage());
+            }
             return discountConnection;
         } else {
             Connection connection = ConnectionPool.getConnectionFromPool();
@@ -45,9 +51,12 @@ public class DiscountJDBCImpl implements DiscountRepository {
     @Override
     public void deleteById(int id) {
         if (MybatisImplementation.flag) {
-            SqlSession session = MybatisImplementation.getSessionFactory().openSession(true);
-            DiscountRepository discountRepository = session.getMapper(DiscountRepository.class);
-            discountRepository.deleteById(id);
+            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+                DiscountRepository discountRepository = session.getMapper(DiscountRepository.class);
+                discountRepository.deleteById(id);
+            } catch (Exception e) {
+                log.error(e.getMessage());
+            }
         } else {
             try (Connection connection = ConnectionPool.getConnectionFromPool()) {
                 PreparedStatement preparedStatement = connection.prepareStatement("delete discount where id = ?");
@@ -62,9 +71,12 @@ public class DiscountJDBCImpl implements DiscountRepository {
     @Override
     public void updateById(Discount value, int id) {
         if (MybatisImplementation.flag) {
-            SqlSession session = MybatisImplementation.getSessionFactory().openSession(true);
-            DiscountRepository discountRepository = session.getMapper(DiscountRepository.class);
-            discountRepository.updateById(value, id);
+            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+                DiscountRepository discountRepository = session.getMapper(DiscountRepository.class);
+                discountRepository.updateById(value, id);
+            } catch (Exception e) {
+                log.error(e.getMessage());
+            }
         } else {
             try (Connection connection = ConnectionPool.getConnectionFromPool()) {
                 PreparedStatement preparedStatement = connection.prepareStatement("Update discount  set amount_of_tours=?, amount_of_discount=? \n" +
@@ -81,12 +93,15 @@ public class DiscountJDBCImpl implements DiscountRepository {
 
     @Override
     public Discount getById(int id) {
+        Discount discount = new Discount();
         if (MybatisImplementation.flag) {
-            SqlSession session = MybatisImplementation.getSessionFactory().openSession(true);
-            DiscountRepository discountRepository = session.getMapper(DiscountRepository.class);
-            return discountRepository.getById(id);
+            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+                DiscountRepository discountRepository = session.getMapper(DiscountRepository.class);
+                discount = discountRepository.getById(id);
+            } catch (Exception e) {
+                log.error(e.getMessage());
+            }
         } else {
-            Discount discount = new Discount();
             try (Connection connection = ConnectionPool.getConnectionFromPool()) {
                 PreparedStatement preparedStatement = connection.prepareStatement("select * from discount where id=?");
                 preparedStatement.setInt(1, id);
@@ -97,7 +112,7 @@ public class DiscountJDBCImpl implements DiscountRepository {
             } catch (SQLException sqlException) {
                 log.error(sqlException.getMessage());
             }
-            return discount;
         }
+        return discount;
     }
 }

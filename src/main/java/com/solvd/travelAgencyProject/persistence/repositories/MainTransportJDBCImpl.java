@@ -1,6 +1,8 @@
 package com.solvd.travelAgencyProject.persistence.repositories;
 
+import com.solvd.travelAgencyProject.domain.ClientAgreement;
 import com.solvd.travelAgencyProject.domain.MainTransport;
+import com.solvd.travelAgencyProject.persistence.interfaces.ClientAgreementRepository;
 import com.solvd.travelAgencyProject.persistence.interfaces.MainTransportRepository;
 import com.solvd.travelAgencyProject.persistence.utils.ConnectionPool;
 import com.solvd.travelAgencyProject.persistence.utils.MybatisImplementation;
@@ -14,11 +16,15 @@ public class MainTransportJDBCImpl implements MainTransportRepository {
     @Override
     public Connection create(MainTransport value) throws SQLException {
         if (MybatisImplementation.flag) {
-            SqlSession session = MybatisImplementation.getSessionFactory().openSession(true);
-            Connection mainTransportConnection = session.getConnection();
-            mainTransportConnection.setAutoCommit(false);
-            MainTransportRepository mainTransportRepository = session.getMapper(MainTransportRepository.class);
-            mainTransportRepository.create(value);
+            Connection mainTransportConnection = null;
+            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+                mainTransportConnection = session.getConnection();
+                mainTransportConnection.setAutoCommit(false);
+                MainTransportRepository mainTransportRepository = session.getMapper(MainTransportRepository.class);
+                mainTransportRepository.create(value);
+            } catch (SQLException e) {
+                log.error(e.getMessage());
+            }
             return mainTransportConnection;
         } else {
             Connection connection = ConnectionPool.getConnectionFromPool();
@@ -42,9 +48,12 @@ public class MainTransportJDBCImpl implements MainTransportRepository {
     @Override
     public void deleteById(int id) {
         if (MybatisImplementation.flag) {
-            SqlSession session = MybatisImplementation.getSessionFactory().openSession(true);
-            MainTransportRepository mainTransportRepository = session.getMapper(MainTransportRepository.class);
-            mainTransportRepository.deleteById(id);
+            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+                MainTransportRepository mainTransportRepository = session.getMapper(MainTransportRepository.class);
+                mainTransportRepository.deleteById(id);
+            } catch (Exception e) {
+                log.error(e.getMessage());
+            }
         } else {
             try (Connection connection = ConnectionPool.getConnectionFromPool()) {
                 PreparedStatement preparedStatement = connection.prepareStatement("delete main_transport where id = ?");
@@ -59,9 +68,12 @@ public class MainTransportJDBCImpl implements MainTransportRepository {
     @Override
     public void updateById(MainTransport value, int id) {
         if (MybatisImplementation.flag) {
-            SqlSession session = MybatisImplementation.getSessionFactory().openSession(true);
-            MainTransportRepository mainTransportRepository = session.getMapper(MainTransportRepository.class);
-            mainTransportRepository.updateById(value, id);
+            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+                MainTransportRepository mainTransportRepository = session.getMapper(MainTransportRepository.class);
+                mainTransportRepository.updateById(value, id);
+            } catch (Exception e) {
+                log.error(e.getMessage());
+            }
         } else {
             try (Connection connection = ConnectionPool.getConnectionFromPool()) {
                 PreparedStatement preparedStatement = connection.prepareStatement("Update main_transport  set name=? \n" +
@@ -78,12 +90,15 @@ public class MainTransportJDBCImpl implements MainTransportRepository {
 
     @Override
     public MainTransport getById(int id) {
+        MainTransport mainTransport = new MainTransport();
         if (MybatisImplementation.flag) {
-            SqlSession session = MybatisImplementation.getSessionFactory().openSession(true);
-            MainTransportRepository mainTransportRepository = session.getMapper(MainTransportRepository.class);
-            return mainTransportRepository.getById(id);
+            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+                MainTransportRepository mainTransportRepository = session.getMapper(MainTransportRepository.class);
+                mainTransport = mainTransportRepository.getById(id);
+            } catch (Exception e) {
+                log.error(e.getMessage());
+            }
         } else {
-            MainTransport mainTransport = new MainTransport();
             try (Connection connection = ConnectionPool.getConnectionFromPool()) {
                 PreparedStatement preparedStatement = connection.prepareStatement("select * from main_transport where id=?");
                 preparedStatement.setInt(1, id);
@@ -93,7 +108,7 @@ public class MainTransportJDBCImpl implements MainTransportRepository {
             } catch (SQLException sqlException) {
                 log.error(sqlException.getMessage());
             }
-            return mainTransport;
         }
+        return mainTransport;
     }
 }

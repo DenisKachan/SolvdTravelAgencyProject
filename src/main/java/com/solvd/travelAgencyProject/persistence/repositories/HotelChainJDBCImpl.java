@@ -1,6 +1,8 @@
 package com.solvd.travelAgencyProject.persistence.repositories;
 
+import com.solvd.travelAgencyProject.domain.ClientAgreement;
 import com.solvd.travelAgencyProject.domain.HotelChain;
+import com.solvd.travelAgencyProject.persistence.interfaces.ClientAgreementRepository;
 import com.solvd.travelAgencyProject.persistence.interfaces.HotelChainRepository;
 import com.solvd.travelAgencyProject.persistence.utils.ConnectionPool;
 import com.solvd.travelAgencyProject.persistence.utils.MybatisImplementation;
@@ -14,11 +16,15 @@ public class HotelChainJDBCImpl implements HotelChainRepository {
     @Override
     public Connection create(HotelChain value) throws SQLException {
         if (MybatisImplementation.flag) {
-            SqlSession session = MybatisImplementation.getSessionFactory().openSession(true);
-            Connection hotelChainConnection = session.getConnection();
-            hotelChainConnection.setAutoCommit(false);
-            HotelChainRepository hotelChainRepository = session.getMapper(HotelChainRepository.class);
-            hotelChainRepository.create(value);
+            Connection hotelChainConnection = null;
+            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+                hotelChainConnection = session.getConnection();
+                hotelChainConnection.setAutoCommit(false);
+                HotelChainRepository hotelChainRepository = session.getMapper(HotelChainRepository.class);
+                hotelChainRepository.create(value);
+            } catch (SQLException e) {
+                log.error(e.getMessage());
+            }
             return hotelChainConnection;
         } else {
             Connection connection = ConnectionPool.getConnectionFromPool();
@@ -42,9 +48,12 @@ public class HotelChainJDBCImpl implements HotelChainRepository {
     @Override
     public void deleteById(int id) {
         if (MybatisImplementation.flag) {
-            SqlSession session = MybatisImplementation.getSessionFactory().openSession(true);
-            HotelChainRepository hotelChainRepository = session.getMapper(HotelChainRepository.class);
-            hotelChainRepository.deleteById(id);
+            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+                HotelChainRepository hotelChainRepository = session.getMapper(HotelChainRepository.class);
+                hotelChainRepository.deleteById(id);
+            } catch (Exception e) {
+                log.error(e.getMessage());
+            }
         } else {
             try (Connection connection = ConnectionPool.getConnectionFromPool()) {
                 PreparedStatement preparedStatement = connection.prepareStatement("delete hotel_chain where id = ?");
@@ -59,9 +68,12 @@ public class HotelChainJDBCImpl implements HotelChainRepository {
     @Override
     public void updateById(HotelChain value, int id) {
         if (MybatisImplementation.flag) {
-            SqlSession session = MybatisImplementation.getSessionFactory().openSession(true);
-            HotelChainRepository hotelChainRepository = session.getMapper(HotelChainRepository.class);
-            hotelChainRepository.updateById(value, id);
+            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+                HotelChainRepository hotelChainRepository = session.getMapper(HotelChainRepository.class);
+                hotelChainRepository.updateById(value, id);
+            } catch (Exception e) {
+                log.error(e.getMessage());
+            }
         } else {
             try (Connection connection = ConnectionPool.getConnectionFromPool()) {
                 PreparedStatement preparedStatement = connection.prepareStatement("Update hotel_chain  set name=? \n" +
@@ -77,12 +89,15 @@ public class HotelChainJDBCImpl implements HotelChainRepository {
 
     @Override
     public HotelChain getById(int id) {
+        HotelChain hotelChain = new HotelChain();
         if (MybatisImplementation.flag) {
-            SqlSession session = MybatisImplementation.getSessionFactory().openSession(true);
-            HotelChainRepository hotelChainRepository = session.getMapper(HotelChainRepository.class);
-            return hotelChainRepository.getById(id);
+            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+                HotelChainRepository hotelChainRepository = session.getMapper(HotelChainRepository.class);
+                hotelChain = hotelChainRepository.getById(id);
+            } catch (Exception e) {
+                log.error(e.getMessage());
+            }
         } else {
-            HotelChain hotelChain = new HotelChain();
             try (Connection connection = ConnectionPool.getConnectionFromPool()) {
                 PreparedStatement preparedStatement = connection.prepareStatement("select * from hotel_chain where id=?");
                 preparedStatement.setInt(1, id);
@@ -92,7 +107,7 @@ public class HotelChainJDBCImpl implements HotelChainRepository {
             } catch (SQLException sqlException) {
                 log.error(sqlException.getMessage());
             }
-            return hotelChain;
         }
+        return hotelChain;
     }
 }

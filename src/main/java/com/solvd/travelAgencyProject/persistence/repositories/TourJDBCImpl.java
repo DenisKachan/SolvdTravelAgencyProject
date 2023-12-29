@@ -1,6 +1,8 @@
 package com.solvd.travelAgencyProject.persistence.repositories;
 
+import com.solvd.travelAgencyProject.domain.ClientAgreement;
 import com.solvd.travelAgencyProject.domain.Tour;
+import com.solvd.travelAgencyProject.persistence.interfaces.ClientAgreementRepository;
 import com.solvd.travelAgencyProject.persistence.interfaces.TourRepository;
 import com.solvd.travelAgencyProject.persistence.utils.ConnectionPool;
 import com.solvd.travelAgencyProject.persistence.utils.MybatisImplementation;
@@ -14,11 +16,15 @@ public class TourJDBCImpl implements TourRepository {
     @Override
     public Connection create(Tour value) throws SQLException {
         if (MybatisImplementation.flag) {
-            SqlSession session = MybatisImplementation.getSessionFactory().openSession(true);
-            Connection tourConnection = session.getConnection();
-            tourConnection.setAutoCommit(false);
-            TourRepository tourRepository = session.getMapper(TourRepository.class);
-            tourRepository.create(value);
+            Connection tourConnection = null;
+            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+                tourConnection = session.getConnection();
+                tourConnection.setAutoCommit(false);
+                TourRepository tourRepository = session.getMapper(TourRepository.class);
+                tourRepository.create(value);
+            } catch (SQLException e) {
+                log.error(e.getMessage());
+            }
             return tourConnection;
         } else {
             Connection connection = ConnectionPool.getConnectionFromPool();
@@ -45,9 +51,12 @@ public class TourJDBCImpl implements TourRepository {
     @Override
     public void deleteById(int id) {
         if (MybatisImplementation.flag) {
-            SqlSession session = MybatisImplementation.getSessionFactory().openSession(true);
-            TourRepository tourRepository = session.getMapper(TourRepository.class);
-            tourRepository.deleteById(id);
+            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+                TourRepository tourRepository = session.getMapper(TourRepository.class);
+                tourRepository.deleteById(id);
+            } catch (Exception e) {
+                log.error(e.getMessage());
+            }
         } else {
             try (Connection connection = ConnectionPool.getConnectionFromPool()) {
                 PreparedStatement preparedStatement = connection.prepareStatement("delete tour where id = ?");
@@ -62,9 +71,12 @@ public class TourJDBCImpl implements TourRepository {
     @Override
     public void updateById(Tour value, int id) {
         if (MybatisImplementation.flag) {
-            SqlSession session = MybatisImplementation.getSessionFactory().openSession(true);
-            TourRepository tourRepository = session.getMapper(TourRepository.class);
-            tourRepository.updateById(value, id);
+            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+                TourRepository tourRepository = session.getMapper(TourRepository.class);
+                tourRepository.updateById(value, id);
+            } catch (Exception e) {
+                log.error(e.getMessage());
+            }
         } else {
             try (Connection connection = ConnectionPool.getConnectionFromPool()) {
                 PreparedStatement preparedStatement = connection.prepareStatement("Update tour set name=?, cost=?, type_of_the_transport=?, type_of_the_tour=? \n" +
@@ -83,12 +95,15 @@ public class TourJDBCImpl implements TourRepository {
 
     @Override
     public Tour getById(int id) {
+        Tour tour = new Tour();
         if (MybatisImplementation.flag) {
-            SqlSession session = MybatisImplementation.getSessionFactory().openSession(true);
-            TourRepository tourRepository = session.getMapper(TourRepository.class);
-            return tourRepository.getById(id);
+            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+                TourRepository tourRepository = session.getMapper(TourRepository.class);
+                tour = tourRepository.getById(id);
+            } catch (Exception e) {
+                log.error(e.getMessage());
+            }
         } else {
-            Tour tour = new Tour();
             try (Connection connection = ConnectionPool.getConnectionFromPool()) {
                 PreparedStatement preparedStatement = connection.prepareStatement("select * from tour where id=?");
                 preparedStatement.setInt(1, id);
@@ -101,16 +116,20 @@ public class TourJDBCImpl implements TourRepository {
             } catch (SQLException sqlException) {
                 log.error(sqlException.getMessage());
             }
-            return tour;
         }
+        return tour;
     }
 
     @Override
     public void showToursWithArrangedCost(double costOfTheTour) {
         if (MybatisImplementation.flag) {
-            SqlSession session = MybatisImplementation.getSessionFactory().openSession(true);
-            TourRepository tourRepository = session.getMapper(TourRepository.class);
-            tourRepository.showToursWithArrangedCost(costOfTheTour);
+            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)
+            ) {
+                TourRepository tourRepository = session.getMapper(TourRepository.class);
+                tourRepository.showToursWithArrangedCost(costOfTheTour);
+            } catch (Exception e) {
+                log.error(e.getMessage());
+            }
         } else {
             try (Connection connection = ConnectionPool.getConnectionFromPool()) {
                 PreparedStatement preparedStatement = connection.prepareStatement("select t.id, t.name, t.cost, tt.id, tt.name from tour t " +
@@ -130,9 +149,13 @@ public class TourJDBCImpl implements TourRepository {
     @Override
     public void showToursWithEstablishedTourType(String nameOfTheTourType) {
         if (MybatisImplementation.flag) {
-            SqlSession session = MybatisImplementation.getSessionFactory().openSession(true);
-            TourRepository tourRepository = session.getMapper(TourRepository.class);
-            tourRepository.showToursWithEstablishedTourType(nameOfTheTourType);
+            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+                TourRepository tourRepository = session.getMapper(TourRepository.class);
+                tourRepository.showToursWithEstablishedTourType(nameOfTheTourType);
+
+            } catch (Exception e) {
+                log.error(e.getMessage());
+            }
         } else {
             try (Connection connection = ConnectionPool.getConnectionFromPool()) {
                 PreparedStatement preparedStatement = connection.prepareStatement("select t.id, t.name, t.cost, tt.id, tt.name from tour t" +

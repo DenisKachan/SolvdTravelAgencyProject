@@ -1,6 +1,8 @@
 package com.solvd.travelAgencyProject.persistence.repositories;
 
+import com.solvd.travelAgencyProject.domain.ClientAgreement;
 import com.solvd.travelAgencyProject.domain.Country;
+import com.solvd.travelAgencyProject.persistence.interfaces.ClientAgreementRepository;
 import com.solvd.travelAgencyProject.persistence.interfaces.CountryRepository;
 import com.solvd.travelAgencyProject.persistence.utils.ConnectionPool;
 import com.solvd.travelAgencyProject.persistence.utils.MybatisImplementation;
@@ -14,11 +16,15 @@ public class CountryJDBCImpl implements CountryRepository {
     @Override
     public Connection create(Country value) throws SQLException {
         if (MybatisImplementation.flag) {
-            SqlSession session = MybatisImplementation.getSessionFactory().openSession(true);
-            Connection countryConnection = session.getConnection();
-            countryConnection.setAutoCommit(false);
-            CountryRepository countryRepository = session.getMapper(CountryRepository.class);
-            countryRepository.create(value);
+            Connection countryConnection = null;
+            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+                countryConnection = session.getConnection();
+                countryConnection.setAutoCommit(false);
+                CountryRepository countryRepository = session.getMapper(CountryRepository.class);
+                countryRepository.create(value);
+            } catch (SQLException e) {
+                log.error(e.getMessage());
+            }
             return countryConnection;
         } else {
             Connection connection = ConnectionPool.getConnectionFromPool();
@@ -42,9 +48,12 @@ public class CountryJDBCImpl implements CountryRepository {
     @Override
     public void deleteById(int id) {
         if (MybatisImplementation.flag) {
-            SqlSession session = MybatisImplementation.getSessionFactory().openSession(true);
-            CountryRepository countryRepository = session.getMapper(CountryRepository.class);
-            countryRepository.deleteById(id);
+            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+                CountryRepository countryRepository = session.getMapper(CountryRepository.class);
+                countryRepository.deleteById(id);
+            } catch (Exception e) {
+                log.error(e.getMessage());
+            }
         } else {
             try (Connection connection = ConnectionPool.getConnectionFromPool()) {
                 PreparedStatement preparedStatement = connection.prepareStatement("delete country where id = ?");
@@ -59,9 +68,12 @@ public class CountryJDBCImpl implements CountryRepository {
     @Override
     public void updateById(Country value, int id) {
         if (MybatisImplementation.flag) {
-            SqlSession session = MybatisImplementation.getSessionFactory().openSession(true);
-            CountryRepository countryRepository = session.getMapper(CountryRepository.class);
-            countryRepository.updateById(value, id);
+            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+                CountryRepository countryRepository = session.getMapper(CountryRepository.class);
+                countryRepository.updateById(value, id);
+            } catch (Exception e) {
+                log.error(e.getMessage());
+            }
         } else {
             try (Connection connection = ConnectionPool.getConnectionFromPool()) {
                 PreparedStatement preparedStatement = connection.prepareStatement("Update country  set name=? \n" +
@@ -77,12 +89,15 @@ public class CountryJDBCImpl implements CountryRepository {
 
     @Override
     public Country getById(int id) {
+        Country country = new Country();
         if (MybatisImplementation.flag) {
-            SqlSession session = MybatisImplementation.getSessionFactory().openSession(true);
-            CountryRepository countryRepository = session.getMapper(CountryRepository.class);
-            return countryRepository.getById(id);
+            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+                CountryRepository countryRepository = session.getMapper(CountryRepository.class);
+                country = countryRepository.getById(id);
+            } catch (Exception e) {
+                log.error(e.getMessage());
+            }
         } else {
-            Country country = new Country();
             try (Connection connection = ConnectionPool.getConnectionFromPool()) {
                 PreparedStatement preparedStatement = connection.prepareStatement("select * from country where id=?");
                 preparedStatement.setInt(1, id);
@@ -92,7 +107,7 @@ public class CountryJDBCImpl implements CountryRepository {
             } catch (SQLException sqlException) {
                 log.error(sqlException.getMessage());
             }
-            return country;
         }
+        return country;
     }
 }

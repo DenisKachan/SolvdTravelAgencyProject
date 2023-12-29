@@ -1,6 +1,8 @@
 package com.solvd.travelAgencyProject.persistence.repositories;
 
+import com.solvd.travelAgencyProject.domain.ClientAgreement;
 import com.solvd.travelAgencyProject.domain.TravelAgent;
+import com.solvd.travelAgencyProject.persistence.interfaces.ClientAgreementRepository;
 import com.solvd.travelAgencyProject.persistence.interfaces.TravelAgentRepository;
 import com.solvd.travelAgencyProject.persistence.utils.ConnectionPool;
 import com.solvd.travelAgencyProject.persistence.utils.MybatisImplementation;
@@ -14,11 +16,15 @@ public class TravelAgentJDBCImpl implements TravelAgentRepository {
     @Override
     public Connection create(TravelAgent value) throws SQLException {
         if (MybatisImplementation.flag) {
-            SqlSession session = MybatisImplementation.getSessionFactory().openSession(true);
-            Connection travelAgentConnection = session.getConnection();
-            travelAgentConnection.setAutoCommit(false);
-            TravelAgentRepository travelAgentRepository = session.getMapper(TravelAgentRepository.class);
-            travelAgentRepository.create(value);
+            Connection travelAgentConnection = null;
+            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+                travelAgentConnection = session.getConnection();
+                travelAgentConnection.setAutoCommit(false);
+                TravelAgentRepository travelAgentRepository = session.getMapper(TravelAgentRepository.class);
+                travelAgentRepository.create(value);
+            } catch (SQLException e) {
+                log.error(e.getMessage());
+            }
             return travelAgentConnection;
         } else {
             Connection connection = ConnectionPool.getConnectionFromPool();
@@ -44,9 +50,12 @@ public class TravelAgentJDBCImpl implements TravelAgentRepository {
     @Override
     public void deleteById(int id) {
         if (MybatisImplementation.flag) {
-            SqlSession session = MybatisImplementation.getSessionFactory().openSession(true);
-            TravelAgentRepository travelAgentRepository = session.getMapper(TravelAgentRepository.class);
-            travelAgentRepository.deleteById(id);
+            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+                TravelAgentRepository travelAgentRepository = session.getMapper(TravelAgentRepository.class);
+                travelAgentRepository.deleteById(id);
+            } catch (Exception e) {
+                log.error(e.getMessage());
+            }
         } else {
             try (Connection connection = ConnectionPool.getConnectionFromPool()) {
                 PreparedStatement preparedStatement = connection.prepareStatement("delete travel_agent where id = ?");
@@ -61,9 +70,12 @@ public class TravelAgentJDBCImpl implements TravelAgentRepository {
     @Override
     public void updateById(TravelAgent value, int id) {
         if (MybatisImplementation.flag) {
-            SqlSession session = MybatisImplementation.getSessionFactory().openSession(true);
-            TravelAgentRepository travelAgentRepository = session.getMapper(TravelAgentRepository.class);
-            travelAgentRepository.updateById(value, id);
+            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+                TravelAgentRepository travelAgentRepository = session.getMapper(TravelAgentRepository.class);
+                travelAgentRepository.updateById(value, id);
+            } catch (Exception e) {
+                log.error(e.getMessage());
+            }
         } else {
             try (Connection connection = ConnectionPool.getConnectionFromPool()) {
                 PreparedStatement preparedStatement = connection.prepareStatement("Update travel_agent  set name=?, surname=?, tour_responsibility=? \n" +
@@ -81,12 +93,15 @@ public class TravelAgentJDBCImpl implements TravelAgentRepository {
 
     @Override
     public TravelAgent getById(int id) {
+        TravelAgent travelAgent = new TravelAgent();
         if (MybatisImplementation.flag) {
-            SqlSession session = MybatisImplementation.getSessionFactory().openSession(true);
-            TravelAgentRepository travelAgentRepository = session.getMapper(TravelAgentRepository.class);
-            return travelAgentRepository.getById(id);
+            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+                TravelAgentRepository travelAgentRepository = session.getMapper(TravelAgentRepository.class);
+                travelAgent = travelAgentRepository.getById(id);
+            } catch (Exception e) {
+                log.error(e.getMessage());
+            }
         } else {
-            TravelAgent travelAgent = new TravelAgent();
             try (Connection connection = ConnectionPool.getConnectionFromPool()) {
                 PreparedStatement preparedStatement = connection.prepareStatement("select * from travel_agent where id=?");
                 preparedStatement.setInt(1, id);
@@ -98,7 +113,7 @@ public class TravelAgentJDBCImpl implements TravelAgentRepository {
             } catch (SQLException sqlException) {
                 log.error(sqlException.getMessage());
             }
-            return travelAgent;
         }
+        return travelAgent;
     }
 }

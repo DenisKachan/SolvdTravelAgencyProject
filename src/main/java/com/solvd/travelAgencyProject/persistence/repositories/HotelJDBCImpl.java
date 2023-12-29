@@ -1,6 +1,8 @@
 package com.solvd.travelAgencyProject.persistence.repositories;
 
+import com.solvd.travelAgencyProject.domain.ClientAgreement;
 import com.solvd.travelAgencyProject.domain.Hotel;
+import com.solvd.travelAgencyProject.persistence.interfaces.ClientAgreementRepository;
 import com.solvd.travelAgencyProject.persistence.interfaces.HotelRepository;
 import com.solvd.travelAgencyProject.persistence.utils.ConnectionPool;
 import com.solvd.travelAgencyProject.persistence.utils.MybatisImplementation;
@@ -14,11 +16,15 @@ public class HotelJDBCImpl implements HotelRepository {
     @Override
     public Connection create(Hotel value) throws SQLException {
         if (MybatisImplementation.flag) {
-            SqlSession session = MybatisImplementation.getSessionFactory().openSession(true);
-            Connection hotelConnection = session.getConnection();
-            hotelConnection.setAutoCommit(false);
-            HotelRepository hotelRepository = session.getMapper(HotelRepository.class);
-            hotelRepository.create(value);
+            Connection hotelConnection = null;
+            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+                hotelConnection = session.getConnection();
+                hotelConnection.setAutoCommit(false);
+                HotelRepository hotelRepository = session.getMapper(HotelRepository.class);
+                hotelRepository.create(value);
+            } catch (SQLException e) {
+                log.error(e.getMessage());
+            }
             return hotelConnection;
         } else {
             Connection connection = ConnectionPool.getConnectionFromPool();
@@ -45,9 +51,12 @@ public class HotelJDBCImpl implements HotelRepository {
     @Override
     public void deleteById(int id) {
         if (MybatisImplementation.flag) {
-            SqlSession session = MybatisImplementation.getSessionFactory().openSession(true);
-            HotelRepository hotelRepository = session.getMapper(HotelRepository.class);
-            hotelRepository.deleteById(id);
+            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+                HotelRepository hotelRepository = session.getMapper(HotelRepository.class);
+                hotelRepository.deleteById(id);
+            } catch (Exception e) {
+                log.error(e.getMessage());
+            }
         } else {
             try (Connection connection = ConnectionPool.getConnectionFromPool()) {
                 PreparedStatement preparedStatement = connection.prepareStatement("delete hotel where id = ?");
@@ -62,9 +71,12 @@ public class HotelJDBCImpl implements HotelRepository {
     @Override
     public void updateById(Hotel value, int id) {
         if (MybatisImplementation.flag) {
-            SqlSession session = MybatisImplementation.getSessionFactory().openSession(true);
-            HotelRepository hotelRepository = session.getMapper(HotelRepository.class);
-            hotelRepository.updateById(value, id);
+            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+                HotelRepository hotelRepository = session.getMapper(HotelRepository.class);
+                hotelRepository.updateById(value, id);
+            } catch (Exception e) {
+                log.error(e.getMessage());
+            }
         } else {
             try (Connection connection = ConnectionPool.getConnectionFromPool()) {
                 PreparedStatement preparedStatement = connection.prepareStatement("Update hotel  set name=?, capacity=?, phone_number=?, hotel_chain_identificator=? \n" +
@@ -83,12 +95,15 @@ public class HotelJDBCImpl implements HotelRepository {
 
     @Override
     public Hotel getById(int id) {
+        Hotel hotel = new Hotel();
         if (MybatisImplementation.flag) {
-            SqlSession session = MybatisImplementation.getSessionFactory().openSession(true);
-            HotelRepository hotelRepository = session.getMapper(HotelRepository.class);
-            return hotelRepository.getById(id);
+            try (SqlSession session = MybatisImplementation.getSessionFactory().openSession(true)) {
+                HotelRepository hotelRepository = session.getMapper(HotelRepository.class);
+                hotel = hotelRepository.getById(id);
+            } catch (Exception e) {
+                log.error(e.getMessage());
+            }
         } else {
-            Hotel hotel = new Hotel();
             try (Connection connection = ConnectionPool.getConnectionFromPool()) {
                 PreparedStatement preparedStatement = connection.prepareStatement("select * from hotel where id=?");
                 preparedStatement.setInt(1, id);
@@ -97,7 +112,7 @@ public class HotelJDBCImpl implements HotelRepository {
             } catch (SQLException sqlException) {
                 log.error(sqlException.getMessage());
             }
-            return hotel;
         }
+        return hotel;
     }
 }
