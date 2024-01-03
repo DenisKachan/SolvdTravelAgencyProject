@@ -1,8 +1,11 @@
 package com.solvd.travelAgencyProject.service.services;
 
 import com.solvd.travelAgencyProject.persistence.repositories.*;
+import com.solvd.travelAgencyProject.persistence.utils.PropertyReader;
 
 public class BaseService {
+
+    PropertyReader propertyReader = new PropertyReader("config.properties");
 
     protected ClientAgreementImpl clientAgreementJDBC;
     protected ClientImpl clientJDBC;

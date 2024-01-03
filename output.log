@@ -88,3 +88,350 @@
 ### The error occurred while executing a query
 ### Cause: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
 15:43:20.835 [main] INFO  com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole - Enter the conditions of the client agreement
+22:32:54.636 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+22:32:59.163 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter 'user' or 'admin' to use the functionality of the program
+22:33:03.388 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted action from the list
+22:33:03.389 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Perform simple query with the help of service
+22:33:03.389 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Restart
+22:34:12.307 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+22:34:19.764 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter 'user' or 'admin' to use the functionality of the program
+22:34:23.316 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted action from the list
+22:34:23.318 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Perform simple query with the help of service
+22:34:23.318 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Restart
+22:34:27.567 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the service class
+22:34:36.997 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the method you want to invoke
+22:35:04.553 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+22:35:09.818 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter 'user' or 'admin' to use the functionality of the program
+22:35:12.492 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted action from the list
+22:35:12.492 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Perform simple query with the help of service
+22:35:12.492 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Restart
+22:35:19.104 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the service class
+22:35:25.600 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the method you want to invoke
+22:35:31.671 [main] INFO  com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole - Enter the phone number of the client
+22:35:34.587 [main] INFO  com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole - Enter the name of the client
+22:35:37.690 [main] INFO  com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole - Enter the surname of the client
+22:35:40.150 [main] INFO  com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole - Enter the id of the discount
+22:35:44.180 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.DiscountImpl - 
+### Error querying database.  Cause: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+### The error may exist in mappers/DiscountMapper.xml
+### The error may involve com.solvd.travelAgencyProject.persistence.interfaces.DiscountRepository.getById
+### The error occurred while executing a query
+### Cause: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+22:38:58.325 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+22:39:09.177 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter 'user' or 'admin' to use the functionality of the program
+22:39:13.760 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted action from the list
+22:39:13.761 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Show tours by any criteria
+22:39:13.761 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. To order a certain tour
+22:39:18.210 [main] INFO  com.solvd.travelAgencyProject.service.services.TourService - Enter 'cost' or 'tour type' if you want get tours by established criteria
+22:39:21.309 [main] INFO  com.solvd.travelAgencyProject.service.services.TourService - Enter the maximum cost of the tour
+22:39:24.569 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.TourImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
+14:17:32.554 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+14:17:35.735 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter 'user' or 'admin' to use the functionality of the program
+14:17:38.812 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted action from the list
+14:17:38.812 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Perform simple query with the help of service
+14:17:38.813 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Restart
+14:17:43.758 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the service class
+14:17:52.696 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the method you want to invoke
+14:17:59.025 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Choose option1. Create instance using xml files2. Create instance using console
+14:17:59.036 [main] INFO  com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole - Enter the phone number of the client
+14:22:57.982 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+14:23:00.878 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter 'user' or 'admin' to use the functionality of the program
+14:23:03.235 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted action from the list
+14:23:03.236 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Perform simple query with the help of service
+14:23:03.236 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Restart
+14:23:06.234 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the service class
+14:23:14.937 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the method you want to invoke
+14:23:21.122 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted option from the list
+14:23:21.123 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Create instance using xml file
+14:23:21.123 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Create instance using console
+14:41:14.470 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+14:41:17.087 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter 'user' or 'admin' to use the functionality of the program
+14:41:19.734 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted action from the list
+14:41:19.736 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Perform simple query with the help of service
+14:41:19.736 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Restart
+14:41:21.550 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the service class
+14:41:26.359 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the method you want to invoke
+14:41:29.737 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted option from the list
+14:41:29.738 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Create instance using xml file
+14:41:29.739 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Create instance using console
+14:42:18.983 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+14:42:21.483 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter 'user' or 'admin' to use the functionality of the program
+14:42:24.686 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted action from the list
+14:42:24.687 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Perform simple query with the help of service
+14:42:24.687 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Restart
+14:42:26.788 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the service class
+14:42:33.098 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the method you want to invoke
+14:42:38.261 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted option from the list
+14:42:38.262 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Create instance using xml file
+14:42:38.262 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Create instance using console
+14:43:56.994 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+14:43:59.021 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter 'user' or 'admin' to use the functionality of the program
+14:44:02.172 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted action from the list
+14:44:02.173 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Perform simple query with the help of service
+14:44:02.173 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Restart
+14:44:04.093 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the service class
+14:44:14.714 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the method you want to invoke
+14:44:20.808 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted option from the list
+14:44:20.808 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Create instance using xml file
+14:44:20.809 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Create instance using console
+14:51:00.377 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+14:51:02.088 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter 'user' or 'admin' to use the functionality of the program
+14:51:04.585 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted action from the list
+14:51:04.585 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Perform simple query with the help of service
+14:51:04.586 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Restart
+14:51:06.204 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the service class
+14:51:11.339 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the method you want to invoke
+14:51:16.410 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted option from the list
+14:51:16.411 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Create instance using xml file
+14:51:16.411 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Create instance using console
+14:52:07.420 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+14:52:10.525 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter 'user' or 'admin' to use the functionality of the program
+14:52:13.270 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted action from the list
+14:52:13.272 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Perform simple query with the help of service
+14:52:13.272 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Restart
+14:52:14.383 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the service class
+14:52:20.183 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the method you want to invoke
+14:52:25.656 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted option from the list
+14:52:25.656 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Create instance using xml file
+14:52:25.657 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Create instance using console
+14:53:59.971 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+14:54:02.259 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter 'user' or 'admin' to use the functionality of the program
+14:54:05.208 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted action from the list
+14:54:05.210 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Perform simple query with the help of service
+14:54:05.210 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Restart
+14:54:06.438 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the service class
+14:54:12.691 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the method you want to invoke
+14:54:18.222 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted option from the list
+14:54:18.223 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Create instance using xml file
+14:54:18.223 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Create instance using console
+14:56:40.545 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+14:56:41.981 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter 'user' or 'admin' to use the functionality of the program
+14:56:45.005 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted action from the list
+14:56:45.005 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Perform simple query with the help of service
+14:56:45.005 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Restart
+14:56:46.398 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the service class
+14:57:04.196 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+14:57:05.799 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter 'user' or 'admin' to use the functionality of the program
+14:57:08.969 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted action from the list
+14:57:08.970 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Perform simple query with the help of service
+14:57:08.970 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Restart
+14:57:10.767 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the service class
+14:57:16.829 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the method you want to invoke
+14:57:21.508 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted option from the list
+14:57:21.508 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Create instance using xml file
+14:57:21.508 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Create instance using console
+14:58:34.890 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+14:58:36.320 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter 'user' or 'admin' to use the functionality of the program
+14:58:38.851 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted action from the list
+14:58:38.851 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Perform simple query with the help of service
+14:58:38.852 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Restart
+14:58:40.154 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the service class
+14:58:46.330 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the method you want to invoke
+14:58:50.562 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted option from the list
+14:58:50.563 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Create instance using xml file
+14:58:50.563 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Create instance using console
+15:00:25.414 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+15:00:27.423 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter 'user' or 'admin' to use the functionality of the program
+15:00:29.987 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted action from the list
+15:00:29.988 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Perform simple query with the help of service
+15:00:29.988 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Restart
+15:00:31.288 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the service class
+15:00:36.293 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the method you want to invoke
+15:00:41.408 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted option from the list
+15:00:41.408 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Create instance using xml file
+15:00:41.409 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Create instance using console
+15:00:56.144 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+15:00:59.253 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter 'user' or 'admin' to use the functionality of the program
+15:01:02.193 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted action from the list
+15:01:02.194 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Perform simple query with the help of service
+15:01:02.194 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Restart
+15:01:05.117 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the service class
+15:01:09.736 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the method you want to invoke
+15:01:15.432 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted option from the list
+15:01:15.433 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Create instance using xml file
+15:01:15.433 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Create instance using console
+15:02:58.637 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+15:03:00.417 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter 'user' or 'admin' to use the functionality of the program
+15:03:03.099 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted action from the list
+15:03:03.099 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Perform simple query with the help of service
+15:03:03.100 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Restart
+15:03:14.393 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+15:03:17.018 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter 'user' or 'admin' to use the functionality of the program
+15:03:20.258 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted action from the list
+15:03:20.258 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Perform simple query with the help of service
+15:03:20.259 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Restart
+15:03:21.730 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the service class
+15:03:27.998 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the method you want to invoke
+15:03:36.824 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted option from the list
+15:03:36.824 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Create instance using xml file
+15:03:36.825 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Create instance using console
+15:07:42.717 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+15:07:44.806 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter 'user' or 'admin' to use the functionality of the program
+15:07:47.351 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted action from the list
+15:07:47.351 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Perform simple query with the help of service
+15:07:47.352 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Restart
+15:07:48.768 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the service class
+15:07:54.470 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the method you want to invoke
+15:08:01.034 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted option from the list
+15:08:01.034 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Create instance using xml file
+15:08:01.034 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Create instance using console
+15:09:20.837 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+15:09:23.224 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter 'user' or 'admin' to use the functionality of the program
+15:09:25.726 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted action from the list
+15:09:25.727 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Perform simple query with the help of service
+15:09:25.727 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Restart
+15:09:27.469 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the service class
+15:09:35.234 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the method you want to invoke
+15:09:41.260 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted option from the list
+15:09:41.260 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Create instance using xml file
+15:09:41.261 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Create instance using console
+15:10:35.557 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+15:10:37.664 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter 'user' or 'admin' to use the functionality of the program
+15:10:40.510 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted action from the list
+15:10:40.511 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Perform simple query with the help of service
+15:10:40.511 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Restart
+15:10:41.973 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the service class
+15:10:49.044 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the method you want to invoke
+15:10:54.453 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted option from the list
+15:10:54.454 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Create instance using xml file
+15:10:54.454 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Create instance using console
+15:12:36.400 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+15:12:38.054 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter 'user' or 'admin' to use the functionality of the program
+15:12:40.252 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted action from the list
+15:12:40.253 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Perform simple query with the help of service
+15:12:40.253 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Restart
+15:12:41.664 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the service class
+15:12:46.848 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the method you want to invoke
+15:12:53.920 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted option from the list
+15:12:53.921 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Create instance using xml file
+15:12:53.922 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Create instance using console
+15:27:34.387 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+15:27:40.948 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter 'user' or 'admin' to use the functionality of the program
+15:27:43.392 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted action from the list
+15:27:43.393 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Perform simple query with the help of service
+15:27:43.393 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Restart
+15:27:45.584 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the service class
+15:27:58.287 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the method you want to invoke
+15:28:04.614 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted option from the list
+15:28:04.614 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Create instance using xml file
+15:28:04.615 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Create instance using console
+15:29:18.952 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+15:29:21.541 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter 'user' or 'admin' to use the functionality of the program
+15:29:23.804 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted action from the list
+15:29:23.805 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Perform simple query with the help of service
+15:29:23.805 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Restart
+15:29:25.133 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the service class
+15:29:30.837 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the method you want to invoke
+15:29:37.385 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted option from the list
+15:29:37.385 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Create instance using xml file
+15:29:37.385 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Create instance using console
+15:31:35.120 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+15:31:38.753 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter 'user' or 'admin' to use the functionality of the program
+15:31:41.232 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted action from the list
+15:31:41.233 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Perform simple query with the help of service
+15:31:41.233 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Restart
+15:31:42.617 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the service class
+15:31:49.401 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the method you want to invoke
+15:31:55.750 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted option from the list
+15:31:55.751 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Create instance using xml file
+15:31:55.751 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Create instance using console
+15:32:56.201 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+15:32:58.736 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter 'user' or 'admin' to use the functionality of the program
+15:33:03.180 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted action from the list
+15:33:03.181 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Perform simple query with the help of service
+15:33:03.181 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Restart
+15:33:05.497 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the service class
+15:33:10.427 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the method you want to invoke
+15:33:15.494 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted option from the list
+15:33:15.495 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Create instance using xml file
+15:33:15.495 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Create instance using console
+15:34:54.766 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+15:34:56.243 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter 'user' or 'admin' to use the functionality of the program
+15:34:58.574 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted action from the list
+15:34:58.574 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Perform simple query with the help of service
+15:34:58.575 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Restart
+15:34:59.894 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the service class
+15:35:07.268 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the method you want to invoke
+15:35:15.645 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted option from the list
+15:35:15.646 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Create instance using xml file
+15:35:15.646 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Create instance using console
+15:36:36.903 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+15:36:38.581 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter 'user' or 'admin' to use the functionality of the program
+15:36:41.194 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted action from the list
+15:36:41.195 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Perform simple query with the help of service
+15:36:41.195 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Restart
+15:36:42.623 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the service class
+15:36:48.348 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the method you want to invoke
+15:36:52.570 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted option from the list
+15:36:52.571 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Create instance using xml file
+15:36:52.572 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Create instance using console
+15:38:02.451 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+15:38:06.832 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter 'user' or 'admin' to use the functionality of the program
+15:38:09.597 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted action from the list
+15:38:09.598 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Perform simple query with the help of service
+15:38:09.598 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Restart
+15:38:11.002 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the service class
+15:38:16.235 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the method you want to invoke
+15:38:21.572 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted option from the list
+15:38:21.572 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Create instance using xml file
+15:38:21.573 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Create instance using console
+15:40:00.912 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+15:40:02.466 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter 'user' or 'admin' to use the functionality of the program
+15:40:04.791 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted action from the list
+15:40:04.792 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Perform simple query with the help of service
+15:40:04.793 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Restart
+15:40:06.073 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the service class
+15:40:12.681 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the method you want to invoke
+15:40:17.033 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted option from the list
+15:40:17.034 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Create instance using xml file
+15:40:17.034 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Create instance using console
+15:40:54.356 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+15:40:57.012 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter 'user' or 'admin' to use the functionality of the program
+15:40:59.193 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted action from the list
+15:40:59.194 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Perform simple query with the help of service
+15:40:59.195 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Restart
+15:41:00.420 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the service class
+15:41:05.690 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the method you want to invoke
+15:41:10.020 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted option from the list
+15:41:10.021 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Create instance using xml file
+15:41:10.021 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Create instance using console
+15:41:38.775 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+15:41:40.409 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter 'user' or 'admin' to use the functionality of the program
+15:41:42.903 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted action from the list
+15:41:42.904 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Perform simple query with the help of service
+15:41:42.904 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Restart
+15:41:44.162 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the service class
+15:41:53.070 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the method you want to invoke
+15:41:59.539 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted option from the list
+15:41:59.539 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Create instance using xml file
+15:41:59.539 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Create instance using console
+15:43:41.094 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+15:43:44.724 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter 'user' or 'admin' to use the functionality of the program
+15:43:47.178 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted action from the list
+15:43:47.179 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Perform simple query with the help of service
+15:43:47.179 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Restart
+15:43:48.594 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the service class
+15:43:54.611 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the method you want to invoke
+15:44:00.583 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted option from the list
+15:44:00.584 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Create instance using xml file
+15:44:00.584 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Create instance using console
+15:45:10.486 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+15:45:12.691 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter 'user' or 'admin' to use the functionality of the program
+15:45:14.974 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted action from the list
+15:45:14.974 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Perform simple query with the help of service
+15:45:14.975 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Restart
+15:45:16.163 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the service class
+15:45:22.545 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the method you want to invoke
+15:45:29.704 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted option from the list
+15:45:29.704 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Create instance using xml file
+15:45:29.705 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Create instance using console
+15:49:02.494 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+15:49:04.371 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter 'user' or 'admin' to use the functionality of the program
+15:49:07.691 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted action from the list
+15:49:07.691 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Perform simple query with the help of service
+15:49:07.691 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Restart
+15:49:09.952 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the service class
+15:49:16.042 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the method you want to invoke
+15:49:21.460 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted option from the list
+15:49:21.461 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Create instance using xml file
+15:49:21.461 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Create instance using console
