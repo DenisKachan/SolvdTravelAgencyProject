@@ -100,6 +100,15 @@ public class MainMenu {
         try {
             log.info("Enter the name of the method you want to invoke");
             String methodName = CreationObjectsFromConsole.scanner.next();
+            if (methodName.contains("create")) {
+                log.info("Enter the number of the wanted option from the list");
+                log.info("1. Create instance using xml file");
+                log.info("2. Create instance using console");
+                int option = CreationObjectsFromConsole.scanner.nextInt();
+                if (option == 1) {
+                    domParserFlag = true;
+                }
+            }
             Method method = aClass.getDeclaredMethod(methodName);
             method.setAccessible(true);
             method.invoke(object);

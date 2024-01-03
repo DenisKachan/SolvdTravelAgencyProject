@@ -1,6 +1,0 @@
-<discount
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:noNameSpaceSchemaLocation="domainXSDs/discount.xsd">
-    <amountOfTours>2</amountOfTours>
-    <amountOfDiscount>0.05</amountOfDiscount>
-</discount>
