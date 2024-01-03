@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.travelAgencyProject.persistence.interfaces.HotelChainRepository">
+    <insert id="create" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+        INSERT into hotel_chain(name) VALUES (#{name});
+    </insert>
+
+    <update id="updateById">
+        Update hotel_chain set name=#{hotelChain.name} where id = #{id};
+    </update>
+
+    <delete id="deleteById">
+        delete hotel_chain where id = #{id}
+    </delete>
+
+    <select id="getById" resultMap="HotelChainResultMap">
+        select * from hotel_chain where id=#{id}
+    </select>
+
+    <resultMap id="HotelChainResultMap" type="com.solvd.travelAgencyProject.domain.HotelChain" autoMapping="false">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+    </resultMap>
+</mapper>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.travelAgencyProject.persistence.interfaces.ClientRepository">
+    <insert id="create" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+        INSERT into client(name, surname, phone_number, discount_id) VALUES (#{name}, #{surname}, #{phoneNumber},
+        #{discountId});
+    </insert>
+
+    <update id="updateById">
+        Update client set name=#{client.name}, surname=#{client.surname}, phone_number=#{client.phoneNumber},
+        discount_id=#{client.discountId}
+        where id =#{id};
+    </update>
+
+    <delete id="deleteById">
+        delete client where id = #{id}
+    </delete>
+
+    <select id="getById" resultMap="ClientResultMap">
+        select * from client where id=#{id}
+    </select>
+
+    <resultMap id="ClientResultMap" type="com.solvd.travelAgencyProject.domain.Client" autoMapping="false">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="surname" property="surname"/>
+        <result column="phone_number" property="phoneNumber"/>
+        <result column="discount_id" property="discountId"/>
+        <association property="Discount" resultMap="DiscountResultMap"/>
+    </resultMap>
+</mapper>

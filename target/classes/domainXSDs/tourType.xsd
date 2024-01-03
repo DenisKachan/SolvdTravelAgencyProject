@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:complexType name="tourTypeType">
+        <xs:all>
+            <xs:element name="name" type="xs:string"/>
+        </xs:all>
+    </xs:complexType>
+    <xs:element name="tourType" type="tourTypeType"/>
+</xs:schema>
