@@ -4,6 +4,7 @@
         <xs:all>
             <xs:element name="name" type="xs:string"/>
         </xs:all>
+        <xs:attribute name="id" type="xs:int" use="required"/>
     </xs:complexType>
     <xs:element name="mainTransport" type="mainTransportType"/>
 </xs:schema>

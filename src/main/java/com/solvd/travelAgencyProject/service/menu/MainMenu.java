@@ -23,6 +23,8 @@ public class MainMenu {
 
     public static boolean domParserFlag = false;
 
+    public static boolean jaxbParserFlag = false;
+
     public void startProgram() {
         log.info("PLease enter 'mybatis' if you want to interact with database using this framework" +
                 "or press any other key if it is not needed");
@@ -102,11 +104,14 @@ public class MainMenu {
             String methodName = CreationObjectsFromConsole.scanner.next();
             if (methodName.contains("create")) {
                 log.info("Enter the number of the wanted option from the list");
-                log.info("1. Create instance using xml file");
+                log.info("1. Create instance using xml and dom parser");
+                log.info("2. Create instance using xml and jaxb parser");
                 log.info("2. Create instance using console");
                 int option = CreationObjectsFromConsole.scanner.nextInt();
                 if (option == 1) {
                     domParserFlag = true;
+                } else if (option == 2) {
+                    jaxbParserFlag = true;
                 }
             }
             Method method = aClass.getDeclaredMethod(methodName);

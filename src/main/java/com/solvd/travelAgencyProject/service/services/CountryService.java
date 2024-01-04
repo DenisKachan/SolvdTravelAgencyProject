@@ -2,8 +2,10 @@ package com.solvd.travelAgencyProject.service.services;
 
 import com.solvd.travelAgencyProject.domain.Country;
 import com.solvd.travelAgencyProject.persistence.utils.DOMParser;
+import com.solvd.travelAgencyProject.persistence.utils.JAXBParser;
 import com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole;
 import com.solvd.travelAgencyProject.service.menu.MainMenu;
+import jakarta.xml.bind.JAXBException;
 import lombok.extern.log4j.Log4j2;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -17,16 +19,22 @@ import java.sql.SQLException;
 @Log4j2
 public class CountryService extends BaseService {
 
+    File countryFile = new File(propertyReader.getProperty("countryFile"));
 
-    public void createCountry() throws SQLException, IOException, SAXException {
+
+    public void createCountry() throws SQLException, IOException, SAXException, JAXBException {
         if (MainMenu.domParserFlag) {
-            File countryFile = new File(propertyReader.getProperty("countryFile"));
             DOMParser domParser = new DOMParser();
             Document document = domParser.parse(countryFile);
             Country country = new Country();
             NodeList names = document.getElementsByTagName("name");
             Node name = names.item(0);
             country.setName(name.getTextContent());
+            countryJDBC.create(country).commit();
+        } else if (MainMenu.jaxbParserFlag) {
+            JAXBParser jaxbParser = new JAXBParser();
+            Country country = new Country();
+            country = (Country) jaxbParser.parseFile(country, countryFile);
             countryJDBC.create(country).commit();
         } else {
             CreationObjectsFromConsole creationObjectsFromConsole = new CreationObjectsFromConsole();
