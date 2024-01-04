@@ -2,6 +2,7 @@ package com.solvd.travelAgencyProject.service.services;
 
 import com.solvd.travelAgencyProject.domain.Hotel;
 import com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole;
+import jakarta.xml.bind.JAXBException;
 import lombok.extern.log4j.Log4j2;
 
 import java.sql.SQLException;
@@ -9,7 +10,8 @@ import java.sql.SQLException;
 @Log4j2
 public class HotelService extends BaseService {
 
-    public void createHotel() throws SQLException {
+
+    public void createHotel() throws SQLException, JAXBException {
         CreationObjectsFromConsole creationObjectsFromConsole = new CreationObjectsFromConsole();
         Hotel hotel = creationObjectsFromConsole.createNewHotelFromConsole();
         if (hotelChainJDBC.getById(hotel.getHotelChainId()) == null) {

@@ -1,9 +1,10 @@
 <?xml version="1.0"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
-    <xs:complexType name="tourTypeType">
+    <xs:complexType name="hotelChainType">
         <xs:all>
             <xs:element name="name" type="xs:string"/>
         </xs:all>
+        <xs:attribute name="id" type="xs:int" use="required"/>
     </xs:complexType>
-    <xs:element name="tourType" type="tourTypeType"/>
+    <xs:element name="hotelChain" type="hotelChainType"/>
 </xs:schema>

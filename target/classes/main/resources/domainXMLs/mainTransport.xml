@@ -1,5 +1,0 @@
-<mainTransport
-               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-               xsi:noNameSpaceSchemaLocation="domainXSDs/mainTransport.xsd">
-    <name>plane</name>
-</mainTransport>
