@@ -9,7 +9,7 @@ import java.io.File;
 
 public class JAXBParser {
 
-    public static JAXBContext jaxbContext;
+    private JAXBContext jaxbContext;
 
     public Object parseFile(Object object, File file) throws JAXBException {
         jaxbContext = JAXBContext.newInstance(object.getClass());
