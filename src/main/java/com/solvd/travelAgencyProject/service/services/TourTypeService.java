@@ -3,6 +3,7 @@ package com.solvd.travelAgencyProject.service.services;
 import com.solvd.travelAgencyProject.domain.TourType;
 import com.solvd.travelAgencyProject.persistence.utils.DOMParser;
 import com.solvd.travelAgencyProject.persistence.utils.JAXBParser;
+import com.solvd.travelAgencyProject.persistence.utils.JacksonParser;
 import com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole;
 import com.solvd.travelAgencyProject.service.menu.MainMenu;
 import jakarta.xml.bind.JAXBException;
@@ -21,6 +22,8 @@ public class TourTypeService extends BaseService {
 
     File tourTypeFile = new File(propertyReader.getProperty("tourTypeFile"));
 
+    File tourTypeFileJSON = new File(propertyReader.getProperty("tourTypeFileJSON"));
+
     public void createTourType() throws SQLException, IOException, SAXException, JAXBException {
         if (MainMenu.domParserFlag) {
             DOMParser domParser = new DOMParser();
@@ -34,6 +37,11 @@ public class TourTypeService extends BaseService {
             JAXBParser jaxbParser = new JAXBParser();
             TourType tourType = new TourType();
             tourType = (TourType) jaxbParser.parseFile(tourType, tourTypeFile);
+            tourTypeJDBC.create(tourType).commit();
+        } else if (MainMenu.jsonParserFlag) {
+            JacksonParser jacksonParser = new JacksonParser();
+            TourType tourType = new TourType();
+            tourType = (TourType) jacksonParser.parseFile(tourType,tourTypeFileJSON);
             tourTypeJDBC.create(tourType).commit();
         } else {
             CreationObjectsFromConsole creationObjectsFromConsole = new CreationObjectsFromConsole();

@@ -1,0 +1,7 @@
+{
+  "id": 1,
+  "name": "Resort",
+  "capacity": 300,
+  "telephoneNumber": 1234312,
+  "hotelChainId": 1
+}

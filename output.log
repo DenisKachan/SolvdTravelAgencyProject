@@ -659,3 +659,39 @@
 16:06:29.463 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Create instance using xml and dom parser
 16:06:29.464 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Create instance using xml and jaxb parser
 16:06:29.464 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Create instance using console
+17:39:06.604 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+17:39:08.315 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter 'user' or 'admin' to use the functionality of the program
+17:39:10.741 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted action from the list
+17:39:10.742 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Perform simple query with the help of service
+17:39:10.742 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Restart
+17:39:12.088 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the service class
+17:39:18.024 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the method you want to invoke
+17:39:22.832 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted option from the list
+17:39:22.833 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Create instance using xml and dom parser
+17:39:22.833 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Create instance using xml and jaxb parser
+17:39:22.833 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Create instance using console
+13:14:34.593 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+13:14:36.975 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter 'user' or 'admin' to use the functionality of the program
+13:14:39.323 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted action from the list
+13:14:39.323 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Perform simple query with the help of service
+13:14:39.323 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Restart
+13:14:40.875 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the service class
+13:14:46.174 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the method you want to invoke
+13:14:53.057 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted option from the list
+13:14:53.058 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Create instance using xml and dom parser
+13:14:53.058 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Create instance using xml and jaxb parser
+13:14:53.058 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 3. Create instance using json and Jackson parser
+13:14:53.059 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 4. Create instance using console
+13:31:20.044 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - PLease enter 'mybatis' if you want to interact with database using this frameworkor press any other key if it is not needed
+13:31:22.280 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter 'user' or 'admin' to use the functionality of the program
+13:31:25.240 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted action from the list
+13:31:25.241 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Perform simple query with the help of service
+13:31:25.241 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Restart
+13:31:26.799 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the service class
+13:31:32.832 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the name of the method you want to invoke
+13:31:38.858 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - Enter the number of the wanted option from the list
+13:31:38.858 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 1. Create instance using xml and dom parser
+13:31:38.861 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 2. Create instance using xml and jaxb parser
+13:31:38.861 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 3. Create instance using json and Jackson parser
+13:31:38.861 [main] INFO  com.solvd.travelAgencyProject.service.menu.MainMenu - 4. Create instance using console
+13:31:43.748 [main] ERROR com.solvd.travelAgencyProject.persistence.repositories.HotelChainImpl - Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))

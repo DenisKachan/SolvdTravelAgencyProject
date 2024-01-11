@@ -3,6 +3,7 @@ package com.solvd.travelAgencyProject.service.services;
 import com.solvd.travelAgencyProject.domain.HotelChain;
 import com.solvd.travelAgencyProject.persistence.utils.DOMParser;
 import com.solvd.travelAgencyProject.persistence.utils.JAXBParser;
+import com.solvd.travelAgencyProject.persistence.utils.JacksonParser;
 import com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole;
 import com.solvd.travelAgencyProject.service.menu.MainMenu;
 import jakarta.xml.bind.JAXBException;
@@ -21,6 +22,8 @@ public class HotelChainService extends BaseService {
 
     File hotelChainFile = new File(propertyReader.getProperty("hotelChainFile"));
 
+    File hotelChainFileJSON = new File(propertyReader.getProperty("hotelChainFileJSON"));
+
     public void createHotelChain() throws SQLException, IOException, SAXException, JAXBException {
         if (MainMenu.domParserFlag) {
             DOMParser domParser = new DOMParser();
@@ -34,6 +37,11 @@ public class HotelChainService extends BaseService {
             JAXBParser jaxbParser = new JAXBParser();
             HotelChain hotelChain = new HotelChain();
             hotelChain = (HotelChain) jaxbParser.parseFile(hotelChain, hotelChainFile);
+            hotelChainJDBC.create(hotelChain).commit();
+        } else if (MainMenu.jsonParserFlag) {
+            JacksonParser jacksonParser = new JacksonParser();
+            HotelChain hotelChain = new HotelChain();
+            hotelChain = (HotelChain) jacksonParser.parseFile(hotelChain,hotelChainFileJSON);
             hotelChainJDBC.create(hotelChain).commit();
         } else {
             CreationObjectsFromConsole creationObjectsFromConsole = new CreationObjectsFromConsole();

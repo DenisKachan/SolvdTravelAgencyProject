@@ -3,6 +3,7 @@ package com.solvd.travelAgencyProject.service.services;
 import com.solvd.travelAgencyProject.domain.MainTransport;
 import com.solvd.travelAgencyProject.persistence.utils.DOMParser;
 import com.solvd.travelAgencyProject.persistence.utils.JAXBParser;
+import com.solvd.travelAgencyProject.persistence.utils.JacksonParser;
 import com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole;
 import com.solvd.travelAgencyProject.service.menu.MainMenu;
 import jakarta.xml.bind.JAXBException;
@@ -21,6 +22,8 @@ public class MainTransportService extends BaseService {
 
     File mainTransportFile = new File(propertyReader.getProperty("mainTransportFile"));
 
+    File mainTransportFileJSON = new File(propertyReader.getProperty("mainTransportFileJSON"));
+
     public void createMainTransport() throws SQLException, IOException, SAXException, JAXBException {
         if (MainMenu.domParserFlag) {
             DOMParser domParser = new DOMParser();
@@ -34,6 +37,11 @@ public class MainTransportService extends BaseService {
             JAXBParser jaxbParser = new JAXBParser();
             MainTransport mainTransport = new MainTransport();
             mainTransport = (MainTransport) jaxbParser.parseFile(mainTransport, mainTransportFile);
+            mainTransportJDBC.create(mainTransport).commit();
+        } else if (MainMenu.jsonParserFlag) {
+            JacksonParser jacksonParser = new JacksonParser();
+            MainTransport mainTransport = new MainTransport();
+            mainTransport = (MainTransport) jacksonParser.parseFile(mainTransport,mainTransportFileJSON);
             mainTransportJDBC.create(mainTransport).commit();
         } else {
             CreationObjectsFromConsole creationObjectsFromConsole = new CreationObjectsFromConsole();

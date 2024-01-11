@@ -3,6 +3,7 @@ package com.solvd.travelAgencyProject.service.services;
 import com.solvd.travelAgencyProject.domain.Discount;
 import com.solvd.travelAgencyProject.persistence.utils.DOMParser;
 import com.solvd.travelAgencyProject.persistence.utils.JAXBParser;
+import com.solvd.travelAgencyProject.persistence.utils.JacksonParser;
 import com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole;
 import com.solvd.travelAgencyProject.service.menu.MainMenu;
 import jakarta.xml.bind.JAXBException;
@@ -21,6 +22,8 @@ public class DiscountService extends BaseService {
 
     File discountFile = new File(propertyReader.getProperty("discountFile"));
 
+    File discountFileJSON = new File(propertyReader.getProperty("discountFileJSON"));
+
     public void createDiscount() throws SQLException, IOException, SAXException, JAXBException {
         if (MainMenu.domParserFlag) {
             DOMParser domParser = new DOMParser();
@@ -37,6 +40,11 @@ public class DiscountService extends BaseService {
             JAXBParser jaxbParser = new JAXBParser();
             Discount discount = new Discount();
             discount = (Discount) jaxbParser.parseFile(discount, discountFile);
+            discountJDBC.create(discount).commit();
+        } else if (MainMenu.jsonParserFlag) {
+            JacksonParser jacksonParser = new JacksonParser();
+            Discount discount = new Discount();
+            discount = (Discount) jacksonParser.parseFile(discount,discountFileJSON);
             discountJDBC.create(discount).commit();
         } else {
             CreationObjectsFromConsole creationObjectsFromConsole = new CreationObjectsFromConsole();
