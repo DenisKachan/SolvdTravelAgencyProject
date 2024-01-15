@@ -6,6 +6,8 @@ import com.solvd.travelAgencyProject.persistence.utils.JAXBParser;
 import com.solvd.travelAgencyProject.persistence.utils.JacksonParser;
 import com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole;
 import com.solvd.travelAgencyProject.service.menu.MainMenu;
+import com.solvd.travelAgencyProject.service.strategyDesignPattern.Context;
+import com.solvd.travelAgencyProject.service.strategyDesignPattern.MainTransportFileSetter;
 import jakarta.xml.bind.JAXBException;
 import lombok.extern.log4j.Log4j2;
 import org.w3c.dom.Document;
@@ -13,21 +15,19 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
 @Log4j2
 public class MainTransportService extends BaseService {
 
-    File mainTransportFile = new File(propertyReader.getProperty("mainTransportFile"));
+    Context context = new Context(new MainTransportFileSetter());
 
-    File mainTransportFileJSON = new File(propertyReader.getProperty("mainTransportFileJSON"));
 
     public void createMainTransport() throws SQLException, IOException, SAXException, JAXBException {
         if (MainMenu.domParserFlag) {
             DOMParser domParser = new DOMParser();
-            Document document = domParser.parse(mainTransportFile);
+            Document document = domParser.parse(context.executeStrategy());
             MainTransport mainTransport = new MainTransport();
             NodeList names = document.getElementsByTagName("name");
             Node name = names.item(0);
@@ -36,12 +36,12 @@ public class MainTransportService extends BaseService {
         } else if (MainMenu.jaxbParserFlag) {
             JAXBParser jaxbParser = new JAXBParser();
             MainTransport mainTransport = new MainTransport();
-            mainTransport = (MainTransport) jaxbParser.parseFile(mainTransport, mainTransportFile);
+            mainTransport = (MainTransport) jaxbParser.parseFile(mainTransport, context.executeStrategy());
             mainTransportJDBC.create(mainTransport).commit();
         } else if (MainMenu.jsonParserFlag) {
             JacksonParser jacksonParser = new JacksonParser();
             MainTransport mainTransport = new MainTransport();
-            mainTransport = (MainTransport) jacksonParser.parseFile(mainTransport,mainTransportFileJSON);
+            mainTransport = (MainTransport) jacksonParser.parseFile(mainTransport, context.executeStrategy());
             mainTransportJDBC.create(mainTransport).commit();
         } else {
             CreationObjectsFromConsole creationObjectsFromConsole = new CreationObjectsFromConsole();

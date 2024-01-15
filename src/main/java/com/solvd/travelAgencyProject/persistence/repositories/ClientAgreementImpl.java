@@ -43,7 +43,6 @@ public class ClientAgreementImpl implements ClientAgreementRepository {
                 while (resultSet.next()) {
                     value.setId(resultSet.getInt(1));
                 }
-
             } catch (SQLException sqlException) {
                 log.error(sqlException.getMessage());
             }

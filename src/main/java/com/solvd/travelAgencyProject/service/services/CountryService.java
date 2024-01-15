@@ -6,6 +6,8 @@ import com.solvd.travelAgencyProject.persistence.utils.JAXBParser;
 import com.solvd.travelAgencyProject.persistence.utils.JacksonParser;
 import com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole;
 import com.solvd.travelAgencyProject.service.menu.MainMenu;
+import com.solvd.travelAgencyProject.service.strategyDesignPattern.Context;
+import com.solvd.travelAgencyProject.service.strategyDesignPattern.CountryFileSetter;
 import jakarta.xml.bind.JAXBException;
 import lombok.extern.log4j.Log4j2;
 import org.w3c.dom.Document;
@@ -13,21 +15,19 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
 @Log4j2
 public class CountryService extends BaseService {
 
-    File countryFile = new File(propertyReader.getProperty("countryFile"));
-    File countryFileJSON = new File(propertyReader.getProperty("countryFileJSON"));
+    Context context = new Context(new CountryFileSetter());
 
 
-    public void createCountry() throws SQLException, IOException, SAXException, JAXBException {
+    public void createCountry() throws SQLException, IOException, SAXException, JAXBException, InstantiationException, IllegalAccessException {
         if (MainMenu.domParserFlag) {
             DOMParser domParser = new DOMParser();
-            Document document = domParser.parse(countryFile);
+            Document document = domParser.parse(context.executeStrategy());
             Country country = new Country();
             NodeList names = document.getElementsByTagName("name");
             Node name = names.item(0);
@@ -36,12 +36,14 @@ public class CountryService extends BaseService {
         } else if (MainMenu.jaxbParserFlag) {
             JAXBParser jaxbParser = new JAXBParser();
             Country country = new Country();
-            country = (Country) jaxbParser.parseFile(country, countryFile);
+            country = (Country) jaxbParser.parseFile(country, context.executeStrategy());
+            System.out.println(country.getName());
             countryJDBC.create(country).commit();
         } else if (MainMenu.jsonParserFlag) {
             JacksonParser jacksonParser = new JacksonParser();
             Country country = new Country();
-            country = (Country) jacksonParser.parseFile(country,countryFileJSON);
+            country = (Country) jacksonParser.parseFile(country, context.executeStrategy());
+            System.out.println(country.getName());
             countryJDBC.create(country).commit();
         } else {
             CreationObjectsFromConsole creationObjectsFromConsole = new CreationObjectsFromConsole();

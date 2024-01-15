@@ -3,7 +3,7 @@ package com.solvd.travelAgencyProject.service.services;
 import com.solvd.travelAgencyProject.persistence.repositories.*;
 import com.solvd.travelAgencyProject.persistence.utils.PropertyReader;
 
-public class BaseService {
+public abstract class BaseService {
 
     PropertyReader propertyReader = new PropertyReader("config.properties");
 

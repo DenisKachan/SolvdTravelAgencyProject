@@ -64,7 +64,6 @@ public class ClientImpl implements ClientRepository {
                 log.error(sqlException.getMessage());
             }
         }
-
     }
 
     @Override

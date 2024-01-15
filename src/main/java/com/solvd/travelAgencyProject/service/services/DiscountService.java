@@ -6,6 +6,8 @@ import com.solvd.travelAgencyProject.persistence.utils.JAXBParser;
 import com.solvd.travelAgencyProject.persistence.utils.JacksonParser;
 import com.solvd.travelAgencyProject.service.consoleScanner.CreationObjectsFromConsole;
 import com.solvd.travelAgencyProject.service.menu.MainMenu;
+import com.solvd.travelAgencyProject.service.strategyDesignPattern.Context;
+import com.solvd.travelAgencyProject.service.strategyDesignPattern.DiscountFileSetter;
 import jakarta.xml.bind.JAXBException;
 import lombok.extern.log4j.Log4j2;
 import org.w3c.dom.Document;
@@ -13,21 +15,18 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
 @Log4j2
 public class DiscountService extends BaseService {
 
-    File discountFile = new File(propertyReader.getProperty("discountFile"));
-
-    File discountFileJSON = new File(propertyReader.getProperty("discountFileJSON"));
+    Context context = new Context(new DiscountFileSetter());
 
     public void createDiscount() throws SQLException, IOException, SAXException, JAXBException {
         if (MainMenu.domParserFlag) {
             DOMParser domParser = new DOMParser();
-            Document document = domParser.parse(discountFile);
+            Document document = domParser.parse(context.executeStrategy());
             Discount discount = new Discount();
             NodeList tours = document.getElementsByTagName("amountOfTours");
             NodeList discounts = document.getElementsByTagName("amountOfDiscount");
@@ -39,12 +38,12 @@ public class DiscountService extends BaseService {
         } else if (MainMenu.jaxbParserFlag) {
             JAXBParser jaxbParser = new JAXBParser();
             Discount discount = new Discount();
-            discount = (Discount) jaxbParser.parseFile(discount, discountFile);
+            discount = (Discount) jaxbParser.parseFile(discount, context.executeStrategy());
             discountJDBC.create(discount).commit();
         } else if (MainMenu.jsonParserFlag) {
             JacksonParser jacksonParser = new JacksonParser();
             Discount discount = new Discount();
-            discount = (Discount) jacksonParser.parseFile(discount,discountFileJSON);
+            discount = (Discount) jacksonParser.parseFile(discount, context.executeStrategy());
             discountJDBC.create(discount).commit();
         } else {
             CreationObjectsFromConsole creationObjectsFromConsole = new CreationObjectsFromConsole();

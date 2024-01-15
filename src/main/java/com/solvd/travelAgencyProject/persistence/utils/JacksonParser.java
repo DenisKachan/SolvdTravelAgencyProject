@@ -9,7 +9,7 @@ public class JacksonParser {
 
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Object parseFile(Object object, File file) throws  IOException {
-     return mapper.readValue(file,object.getClass());
+    public Object parseFile(Object object, File file) throws IOException {
+        return mapper.readValue(file, object.getClass());
     }
 }
