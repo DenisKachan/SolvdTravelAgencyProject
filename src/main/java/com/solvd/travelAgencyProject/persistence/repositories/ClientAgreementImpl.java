@@ -15,9 +15,9 @@ public class ClientAgreementImpl implements ClientAgreementRepository {
     @Override
     public Connection create(ClientAgreement value) throws SQLException {
         if (MybatisConfiguration.flag) {
-            Connection clientAgreementConnection = null;
-            try (SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true)) {
-                clientAgreementConnection = session.getConnection();
+            SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true);
+            Connection clientAgreementConnection = session.getConnection();
+            try  {
                 clientAgreementConnection.setAutoCommit(false);
                 ClientAgreementRepository clientAgreementRepository = session.getMapper(ClientAgreementRepository.class);
                 clientAgreementRepository.create(value);
@@ -28,7 +28,7 @@ public class ClientAgreementImpl implements ClientAgreementRepository {
         } else {
             Connection connection = ConnectionPool.getConnectionFromPool();
             connection.setAutoCommit(false);
-            try (connection) {
+            try {
                 PreparedStatement preparedStatement = connection.prepareStatement("INSERT into client_agreement(conditions, client_id, client_discount_id, travel_agent_id, tour_identificator, tour_transport, tour_type) \n" +
                         "VALUES (?, ?, ?, ?, ?, ?, ?);", Statement.RETURN_GENERATED_KEYS);
                 preparedStatement.setString(1, value.getConditions());

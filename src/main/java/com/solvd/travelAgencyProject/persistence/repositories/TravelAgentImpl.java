@@ -14,9 +14,9 @@ public class TravelAgentImpl implements TravelAgentRepository {
     @Override
     public Connection create(TravelAgent value) throws SQLException {
         if (MybatisConfiguration.flag) {
-            Connection travelAgentConnection = null;
-            try (SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true)) {
-                travelAgentConnection = session.getConnection();
+            SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true);
+            Connection travelAgentConnection = session.getConnection();
+            try {
                 travelAgentConnection.setAutoCommit(false);
                 TravelAgentRepository travelAgentRepository = session.getMapper(TravelAgentRepository.class);
                 travelAgentRepository.create(value);
@@ -27,7 +27,7 @@ public class TravelAgentImpl implements TravelAgentRepository {
         } else {
             Connection connection = ConnectionPool.getConnectionFromPool();
             connection.setAutoCommit(false);
-            try (connection) {
+            try {
                 PreparedStatement preparedStatement = connection.prepareStatement("INSERT into travel_agent(name, surname, tour_responsibility) \n" +
                         "VALUES (?, ?, ?);", Statement.RETURN_GENERATED_KEYS);
                 preparedStatement.setString(1, value.getName());

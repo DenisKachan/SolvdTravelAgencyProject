@@ -15,9 +15,9 @@ public class TourTypeImpl implements TourTypeRepository {
     @Override
     public Connection create(TourType value) throws SQLException {
         if (MybatisConfiguration.flag) {
-            Connection tourTypeConnection = null;
-            try (SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true)) {
-                tourTypeConnection = session.getConnection();
+            SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true);
+            Connection tourTypeConnection = session.getConnection();
+            try {
                 tourTypeConnection.setAutoCommit(false);
                 TourTypeRepository tourTypeRepository = session.getMapper(TourTypeRepository.class);
                 tourTypeRepository.create(value);
@@ -28,7 +28,7 @@ public class TourTypeImpl implements TourTypeRepository {
         } else {
             Connection connection = ConnectionPool.getConnectionFromPool();
             connection.setAutoCommit(false);
-            try (connection) {
+            try {
                 PreparedStatement preparedStatement = connection.prepareStatement("INSERT into tour_type(name) \n" +
                         "VALUES ('sea');", Statement.RETURN_GENERATED_KEYS);
                 preparedStatement.setString(1, value.getName());
