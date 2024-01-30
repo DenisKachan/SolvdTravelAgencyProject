@@ -1,5 +1,9 @@
 package com.solvd.travelAgencyProject.domain;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.Data;
 import lombok.extern.log4j.Log4j2;
 
@@ -7,8 +11,11 @@ import java.util.Objects;
 
 @Log4j2
 @Data
+@XmlRootElement(name = "discount")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Discount {
 
+    @XmlAttribute(name = "id")
     private int id;
 
     private int amountOfTours;

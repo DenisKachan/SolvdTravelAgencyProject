@@ -16,9 +16,9 @@ public class DiscountImpl implements DiscountRepository {
     @Override
     public Connection create(Discount value) throws SQLException {
         if (MybatisConfiguration.flag) {
-            Connection discountConnection = null;
-            try (SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true)) {
-                discountConnection = session.getConnection();
+            SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true);
+            Connection discountConnection = session.getConnection();
+            try {
                 discountConnection.setAutoCommit(false);
                 DiscountRepository discountRepository = session.getMapper(DiscountRepository.class);
                 discountRepository.create(value);
@@ -29,7 +29,7 @@ public class DiscountImpl implements DiscountRepository {
         } else {
             Connection connection = ConnectionPool.getConnectionFromPool();
             connection.setAutoCommit(false);
-            try (connection) {
+            try {
                 PreparedStatement preparedStatement = connection.prepareStatement("INSERT into discount(amount_of_tours, amount_of_discount) \n" +
                         "VALUES (?, ?);", Statement.RETURN_GENERATED_KEYS);
                 preparedStatement.setInt(1, value.getAmountOfTours());

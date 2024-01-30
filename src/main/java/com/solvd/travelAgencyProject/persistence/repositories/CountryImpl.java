@@ -14,9 +14,9 @@ public class CountryImpl implements CountryRepository {
     @Override
     public Connection create(Country value) throws SQLException {
         if (MybatisConfiguration.flag) {
-            Connection countryConnection = null;
-            try (SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true)) {
-                countryConnection = session.getConnection();
+            SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true);
+            Connection countryConnection = session.getConnection();
+            try  {
                 countryConnection.setAutoCommit(false);
                 CountryRepository countryRepository = session.getMapper(CountryRepository.class);
                 countryRepository.create(value);
@@ -27,7 +27,7 @@ public class CountryImpl implements CountryRepository {
         } else {
             Connection connection = ConnectionPool.getConnectionFromPool();
             connection.setAutoCommit(false);
-            try (connection) {
+            try {
                 PreparedStatement preparedStatement = connection.prepareStatement("INSERT into country(name) \n" +
                         "VALUES (?);", Statement.RETURN_GENERATED_KEYS);
                 preparedStatement.setString(1, value.getName());

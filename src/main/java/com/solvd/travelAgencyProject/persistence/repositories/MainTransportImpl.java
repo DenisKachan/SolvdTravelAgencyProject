@@ -14,9 +14,9 @@ public class MainTransportImpl implements MainTransportRepository {
     @Override
     public Connection create(MainTransport value) throws SQLException {
         if (MybatisConfiguration.flag) {
-            Connection mainTransportConnection = null;
-            try (SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true)) {
-                mainTransportConnection = session.getConnection();
+            SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true);
+            Connection mainTransportConnection = session.getConnection();
+            try {
                 mainTransportConnection.setAutoCommit(false);
                 MainTransportRepository mainTransportRepository = session.getMapper(MainTransportRepository.class);
                 mainTransportRepository.create(value);
@@ -27,7 +27,7 @@ public class MainTransportImpl implements MainTransportRepository {
         } else {
             Connection connection = ConnectionPool.getConnectionFromPool();
             connection.setAutoCommit(false);
-            try (connection) {
+            try {
                 PreparedStatement preparedStatement = connection.prepareStatement("INSERT into main_transport(name) \n" +
                         "VALUES (?);", Statement.RETURN_GENERATED_KEYS);
                 preparedStatement.setString(1, value.getName());

@@ -14,9 +14,9 @@ public class ClientImpl implements ClientRepository {
     @Override
     public Connection create(Client value) throws SQLException {
         if (MybatisConfiguration.flag) {
-            Connection clientConnection = null;
-            try (SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true)) {
-                clientConnection = session.getConnection();
+            SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true);
+            Connection clientConnection = session.getConnection();
+            try {
                 clientConnection.setAutoCommit(false);
                 ClientRepository clientRepository = session.getMapper(ClientRepository.class);
                 clientRepository.create(value);
@@ -27,7 +27,7 @@ public class ClientImpl implements ClientRepository {
         } else {
             Connection connection = ConnectionPool.getConnectionFromPool();
             connection.setAutoCommit(false);
-            try (connection) {
+            try {
                 PreparedStatement preparedStatement = connection.prepareStatement("INSERT into client(name, surname, phone_number, discount_id) \n" +
                         "VALUES (?, ?, ?, ?);", Statement.RETURN_GENERATED_KEYS);
                 preparedStatement.setString(1, value.getName());
@@ -64,7 +64,6 @@ public class ClientImpl implements ClientRepository {
                 log.error(sqlException.getMessage());
             }
         }
-
     }
 
     @Override

@@ -14,9 +14,9 @@ public class TourImpl implements TourRepository {
     @Override
     public Connection create(Tour value) throws SQLException {
         if (MybatisConfiguration.flag) {
-            Connection tourConnection = null;
-            try (SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true)) {
-                tourConnection = session.getConnection();
+            SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true);
+            Connection tourConnection = session.getConnection();
+            try {
                 tourConnection.setAutoCommit(false);
                 TourRepository tourRepository = session.getMapper(TourRepository.class);
                 tourRepository.create(value);
@@ -27,7 +27,7 @@ public class TourImpl implements TourRepository {
         } else {
             Connection connection = ConnectionPool.getConnectionFromPool();
             connection.setAutoCommit(false);
-            try (connection) {
+            try {
                 PreparedStatement preparedStatement = connection.prepareStatement("INSERT into tour(name, cost, type_of_the_transport, type_of_the_tour) \n" +
                         "VALUES (?, ?, ?, ?);", Statement.RETURN_GENERATED_KEYS);
                 preparedStatement.setString(1, value.getName());

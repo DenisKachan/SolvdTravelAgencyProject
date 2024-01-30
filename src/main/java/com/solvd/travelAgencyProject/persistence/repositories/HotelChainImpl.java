@@ -14,9 +14,9 @@ public class HotelChainImpl implements HotelChainRepository {
     @Override
     public Connection create(HotelChain value) throws SQLException {
         if (MybatisConfiguration.flag) {
-            Connection hotelChainConnection = null;
-            try (SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true)) {
-                hotelChainConnection = session.getConnection();
+            SqlSession session = MybatisConfiguration.getSessionFactory().openSession(true);
+            Connection hotelChainConnection = session.getConnection();
+            try {
                 hotelChainConnection.setAutoCommit(false);
                 HotelChainRepository hotelChainRepository = session.getMapper(HotelChainRepository.class);
                 hotelChainRepository.create(value);
@@ -27,7 +27,7 @@ public class HotelChainImpl implements HotelChainRepository {
         } else {
             Connection connection = ConnectionPool.getConnectionFromPool();
             connection.setAutoCommit(false);
-            try (connection) {
+            try {
                 PreparedStatement preparedStatement = connection.prepareStatement("INSERT into hotel_chain(name) \n" +
                         "VALUES (?);", Statement.RETURN_GENERATED_KEYS);
                 preparedStatement.setString(1, value.getName());
